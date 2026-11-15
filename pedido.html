@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacer pedido por WhatsApp · Extracto Importado</title>
+  <meta name="description" content="Armá tu pedido en 3 pasos: elegí tus fragancias, el formato y tus datos. Te abrimos WhatsApp con el pedido listo." />
+  <meta name="theme-color" content="#f2ece3" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cinzel:wght@500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body data-page="pedido">
+  <main id="main">
+    <header class="phead wrap">
+      <div>
+        <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a><span>Hacer pedido</span></nav>
+        <h1 class="display" data-split>Tu pedido, <i>en 3 pasos.</i></h1>
+        <p class="lead" data-reveal>Elegí tus fragancias, el formato y tus datos. Te abrimos WhatsApp con el pedido listo para enviar a nuestra atención al cliente.</p>
+      </div>
+      <p class="phead__meta"><strong>659 071 81</strong>WhatsApp</p>
+    </header>
+
+    <section class="order wrap" id="pedido">
+      <ol class="steps" id="steps">
+        <li class="steps__item is-active" data-step="1"><span>1</span>Fragancias</li>
+        <li class="steps__item" data-step="2"><span>2</span>Formato</li>
+        <li class="steps__item" data-step="3"><span>3</span>Tus datos</li>
+      </ol>
+      <div class="order__grid">
+        <div class="order__panel">
+          <div class="pane is-active" data-pane="1">
+            <label class="field-search">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+              <span class="sr-only">Buscar fragancia</span>
+              <input id="pickSearch" type="search" placeholder="Buscá la fragancia (ej. Sauvage, Yara, Libre)" autocomplete="off" />
+            </label>
+            <div class="seg" id="pickTabs" role="tablist"></div>
+            <div class="picklist" id="pickList" data-lenis-prevent></div>
+          </div>
+          <div class="pane" data-pane="2">
+            <p class="pane__hint">Elegí el formato y la cantidad de cada fragancia. Las promos se aplican solas.</p>
+            <div class="lines" id="lines"></div>
+          </div>
+          <form class="pane form" data-pane="3" id="orderForm" novalidate>
+            <div class="field"><label for="fName">Nombre</label><input id="fName" name="name" autocomplete="name" required placeholder="Tu nombre" /></div>
+            <div class="field"><label for="fCity">Departamento</label><select id="fCity" name="city"></select></div>
+            <fieldset class="field"><legend>Entrega</legend>
+              <div class="radios">
+                <label><input type="radio" name="delivery" value="Envío a domicilio" checked /> <span>Envío a domicilio</span></label>
+                <label><input type="radio" name="delivery" value="Envío a terminal / courier" /> <span>Courier / terminal</span></label>
+                <label><input type="radio" name="delivery" value="Entrega en Santa Cruz" /> <span>Entrega en Santa Cruz</span></label>
+              </div>
+            </fieldset>
+            <div class="field"><label for="fAddr">Dirección o zona <small>(opcional)</small></label><input id="fAddr" name="addr" autocomplete="street-address" placeholder="Barrio, calle, referencia" /></div>
+            <fieldset class="field"><legend>Pago</legend>
+              <div class="radios">
+                <label><input type="radio" name="pay" value="QR" checked /> <span>QR</span></label>
+                <label><input type="radio" name="pay" value="Transferencia" /> <span>Transferencia</span></label>
+                <label><input type="radio" name="pay" value="Efectivo" /> <span>Efectivo</span></label>
+              </div>
+            </fieldset>
+            <div class="field"><label for="fNote">Nota <small>(opcional)</small></label><textarea id="fNote" name="note" rows="2" placeholder="Es para regalo, horario de entrega…"></textarea></div>
+          </form>
+          <div class="pane__nav">
+            <button class="btn btn--line" id="stepBack" hidden>← Atrás</button>
+            <button class="btn btn--dark" id="stepNext">Continuar →</button>
+          </div>
+        </div>
+        <aside class="summary" aria-label="Resumen del pedido">
+          <p class="summary__title">Resumen</p>
+          <div class="summary__items" id="summaryItems"></div>
+          <div class="summary__totals" id="summaryTotals"></div>
+          <button class="btn btn--wa btn--block" id="sendWa" disabled>
+            <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.5 6.5 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 5c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.4-.4Z"/></svg>
+            <span>Enviar pedido por WhatsApp</span>
+          </button>
+          <p class="fine">Confirmamos stock, total y envío por WhatsApp antes de cobrar.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/src/pages/order.js"></script>
+</body>
+</html>
