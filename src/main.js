@@ -1,6 +1,6 @@
 import './style.css';
 import { catalog, ACCORDS, accordGroups, groupScore } from './catalog.js';
-import { SIZES, sizeById, bestPrice, bestsellers, blurbs, extras, waLink, DEPARTAMENTOS, faqs } from './data.js';
+import { PROMO, PRICE_100, LIST_100, SIZES, sizeById, bestPrice, bestsellers, blurbs, extras, waLink, DEPARTAMENTOS, faqs } from './data.js';
 
 /* ───────── helpers ───────── */
 const $ = (s, el = document) => el.querySelector(s);
@@ -57,8 +57,9 @@ function totals() {
   const groups = SIZES.filter((s) => units[s.id]).map((s) => {
     const n = units[s.id];
     const price = bestPrice(s.id, n);
-    total += price; regular += n * s.unit;
-    return { size: s, n, price, save: n * s.unit - price };
+    const list = n * (s.list || s.unit);
+    total += price; regular += list;
+    return { size: s, n, price, list, save: list - price };
   });
   return { total, regular, save: regular - total, groups, count: cart.reduce((a, l) => a + l.qty, 0) };
 }
@@ -85,7 +86,7 @@ function media(p, cls = '') {
 const accordDots = (p, n = 4) => p.accords.slice(0, n).map((a) => `<span><i style="--c:${ACCORDS[a] || '#ccc'}"></i>${esc(a)}</span>`).join('');
 
 function card(p) {
-  const badge = p.soon ? '<span class="badge">Próximamente</span>' : p.isNew ? '<span class="badge badge--new">Nuevo</span>' : '';
+  const badge = p.soon ? '<span class="badge">Próximamente</span>' : PROMO.active ? `<span class="badge badge--promo">${PROMO.name}</span>` : p.isNew ? '<span class="badge badge--new">Nuevo</span>' : '';
   return `<article class="card">
     <button class="card__media" data-open="${p.id}" aria-label="Ver ${esc(p.name)}">${media(p)}${badge}</button>
     <div class="card__body">
@@ -93,7 +94,7 @@ function card(p) {
       <h3 class="card__name"><button data-open="${p.id}">${esc(p.name)}</button></h3>
       <div class="card__acc">${accordDots(p, 3)}</div>
       <div class="card__foot">
-        <p class="card__price"><strong>${bs(410)}</strong><span>100 ml · decants desde 50</span></p>
+        <p class="card__price"><strong>${PROMO.active ? `<s>${LIST_100}</s> ` : ''}${bs(PRICE_100)}</strong><span>100 ml · decants desde 50</span></p>
         <button class="btn-add ${inCart(p.id) ? 'is-in' : ''}" data-add="${p.id}" aria-label="Agregar ${esc(p.name)} 100 ml al pedido"><span class="btn-add__plus">+</span><span class="btn-add__ok">✓</span></button>
       </div>
     </div>
@@ -116,7 +117,7 @@ function resultRow(p) {
       ${p.img ? `<img src="${p.img}" alt="" loading="lazy" />` : '<span class="res__ph">E</span>'}
       <span><strong>${esc(p.name)}</strong><small>${esc(p.house)} · ${GENDER[p.gender]}</small></span>
     </button>
-    <button class="res__add" data-add="${p.id}" aria-label="Agregar ${esc(p.name)}">+ 410 Bs.</button>
+    <button class="res__add" data-add="${p.id}" aria-label="Agregar ${esc(p.name)}">+ ${PRICE_100} Bs.</button>
   </div>`;
 }
 
@@ -249,7 +250,7 @@ function openProduct(id) {
       </div>
       <p class="pm__label">Formato</p>
       <div class="sizes" role="radiogroup" aria-label="Formato">
-        ${SIZES.map((s) => `<button role="radio" aria-checked="${s.id === size}" data-size="${s.id}"><strong>${s.label}</strong><span>${bs(s.unit)}</span><small>${s.packs.map((k) => `${k.qty}× ${bs(k.price)}`).join(' · ')}</small></button>`).join('')}
+        ${SIZES.map((s) => `<button role="radio" aria-checked="${s.id === size}" data-size="${s.id}"><strong>${s.label}</strong><span>${s.list && s.list !== s.unit ? `<s>${s.list}</s> ` : ''}${bs(s.unit)}</span><small>${s.packs.map((k) => `${k.qty}× ${bs(k.price)}`).join(' · ')}</small></button>`).join('')}
       </div>
       <div class="pm__buy">
         <div class="qty"><button data-q="-1" aria-label="Menos">−</button><output id="pmQty">1</output><button data-q="1" aria-label="Más">+</button></div>
@@ -304,15 +305,15 @@ function wireLines(root) {
   });
 }
 function totalsHtml(t) {
-  return `${t.groups.map((g) => `<div class="tot"><span>${g.n} × ${g.size.label}</span><span>${g.save ? `<s>${bs(g.n * g.size.unit)}</s> ` : ''}${bs(g.price)}</span></div>`).join('')}
-    ${t.save ? `<div class="tot tot--save"><span>Ahorro por promo</span><span>−${bs(t.save)}</span></div>` : ''}
+  return `${t.groups.map((g) => `<div class="tot"><span>${g.n} × ${g.size.label}</span><span>${g.save ? `<s>${bs(g.list)}</s> ` : ''}${bs(g.price)}</span></div>`).join('')}
+    ${t.save ? `<div class="tot tot--save"><span>Ahorro${PROMO.active ? ` ${PROMO.name}` : ' por promo'}</span><span>−${bs(t.save)}</span></div>` : ''}
     <div class="tot tot--ship"><span>Envío</span><span>${t.groups.some((g) => g.size.id === '100') ? 'Gratis en 100 ml' : 'A confirmar'}</span></div>
     <div class="tot tot--total"><span>Total</span><strong>${bs(t.total)}</strong></div>`;
 }
 function nudge(t) {
   const n100 = t.groups.find((g) => g.size.id === '100')?.n || 0;
-  if (n100 === 1) return 'Sumá 1 perfume de 100 ml más y pagás 690 Bs. por los dos.';
-  if (n100 === 3) return 'Con 1 más llevás 4 perfumes por 1.260 Bs.';
+  if (n100 === 1) return `Sumá 1 perfume de 100 ml más y llevás los dos por ${bs(bestPrice('100', 2))}.`;
+  if (n100 === 3) return `Con 1 más llevás 4 perfumes por ${bs(bestPrice('100', 4))}.`;
   return '';
 }
 function renderCart() {
@@ -408,7 +409,7 @@ function orderMessage() {
     ...lines,
     '',
     ...t.groups.map((g) => `${g.n} × ${g.size.label}: ${bs(g.price)}`),
-    t.save ? `Ahorro por promo: ${bs(t.save)}` : null,
+    t.save ? `Ahorro${PROMO.active ? ` ${PROMO.name}` : ' por promo'}: ${bs(t.save)}` : null,
     `*Total estimado: ${bs(t.total)}*`,
     '',
     `Nombre: ${f.name || '—'}`,
@@ -431,6 +432,12 @@ $('#sendWa').addEventListener('click', () => {
   window.open(waLink(orderMessage()), '_blank', 'noopener');
 });
 $('#fName').addEventListener('input', () => $('#fName').closest('.field').classList.remove('is-err'));
+
+/* ───────── promo copy ───────── */
+if (PROMO.active) {
+  document.documentElement.classList.add('has-promo');
+  $('#compareAdd').textContent = `Agregar · ${PRICE_100} Bs.`;
+}
 
 /* ───────── misc ───────── */
 const track = $('.topbar__track');

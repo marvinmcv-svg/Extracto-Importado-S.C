@@ -10,11 +10,19 @@ export const INSTAGRAM = 'https://www.instagram.com/extractoimportado_sc/';
 export const waLink = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 /**
+ * Black Friday: every 100 ml bottle at 350 Bs. (list price 410).
+ * Set `active: false` to go back to regular prices everywhere on the site.
+ */
+export const PROMO = { active: true, name: 'Black Friday', price100: 350 };
+export const LIST_100 = 410;
+export const PRICE_100 = PROMO.active ? PROMO.price100 : LIST_100;
+
+/**
  * Sizes and their price ladders. `packs` are the promo bundles from the catalog:
  * the cart always picks the cheapest combination automatically.
  */
 export const SIZES = [
-  { id: '100', ml: 100, label: '100 ml', unit: 410, packs: [{ qty: 2, price: 690 }, { qty: 4, price: 1260 }], note: 'Frasco · envío gratis' },
+  { id: '100', ml: 100, label: '100 ml', unit: PRICE_100, list: LIST_100, packs: [{ qty: 2, price: 690 }, { qty: 4, price: 1260 }], note: 'Frasco · envío gratis' },
   { id: '30', ml: 30, label: '30 ml', unit: 210, packs: [{ qty: 2, price: 370 }], note: 'Decant' },
   { id: '10', ml: 10, label: '10 ml', unit: 90, packs: [{ qty: 3, price: 240 }], note: 'Decant' },
   { id: '5', ml: 5, label: '5 ml', unit: 50, packs: [{ qty: 3, price: 135 }], note: 'Decant · para probar' },
