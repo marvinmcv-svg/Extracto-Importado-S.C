@@ -26,8 +26,8 @@ function goStep(n, scroll = true) {
   }
 }
 const setNextLabel = () => {
-  if (step === 1) $('#stepNext').textContent = cart.length ? `Continuar con ${cart.length} fragancia${cart.length === 1 ? '' : 's'} →` : 'Continuar →';
-  else $('#stepNext').textContent = 'Continuar →';
+  if (step === 1) $('#stepNext').textContent = cart.length ? `Continuar con ${cart.length} fragancia${cart.length === 1 ? '' : 's'}` : 'Continuar';
+  else $('#stepNext').textContent = 'Continuar';
 };
 $('#stepNext').addEventListener('click', () => goStep(step + 1));
 $('#stepBack').addEventListener('click', () => goStep(step - 1));

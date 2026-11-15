@@ -114,8 +114,8 @@ export function totals() {
 
 export function nudge(t = totals()) {
   const n100 = t.groups.find((g) => g.size.id === '100')?.n || 0;
-  if (n100 === 1) return `Sumá 1 perfume de 100 ml más y llevás los dos por ${bs(bestPrice('100', 2))}.`;
-  if (n100 === 3) return `Con 1 más llevás 4 perfumes por ${bs(bestPrice('100', 4))}.`;
+  if (n100 === 1) return `Sumá 1 perfume de 100 ml más y llevás los dos por ${bs(bestPrice('100', 2))}`;
+  if (n100 === 3) return `Con 1 más llevás 4 perfumes por ${bs(bestPrice('100', 4))}`;
   return '';
 }
 

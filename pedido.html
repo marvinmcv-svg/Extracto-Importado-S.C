@@ -9,14 +9,14 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cinzel:wght@500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body data-page="pedido">
   <main id="main">
     <header class="phead wrap">
       <div>
         <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a><span>Hacer pedido</span></nav>
-        <h1 class="display" data-split>Tu pedido, <i>en 3 pasos.</i></h1>
+        <h1 class="display" data-split>Tu pedido. <i>En 3 pasos.</i></h1>
         <p class="lead" data-reveal>Elegí tus fragancias, el formato y tus datos. Te abrimos WhatsApp con el pedido listo para enviar a nuestra atención al cliente.</p>
       </div>
       <p class="phead__meta"><strong>659 071 81</strong>WhatsApp</p>
@@ -44,28 +44,28 @@
             <div class="lines" id="lines"></div>
           </div>
           <form class="pane form" data-pane="3" id="orderForm" novalidate>
-            <div class="field"><label for="fName">Nombre</label><input id="fName" name="name" autocomplete="name" required placeholder="Tu nombre" /></div>
-            <div class="field"><label for="fCity">Departamento</label><select id="fCity" name="city"></select></div>
-            <fieldset class="field"><legend>Entrega</legend>
+            <div class="field field--float"><input id="fName" name="name" autocomplete="name" required placeholder="Nombre" /><label for="fName">Nombre</label></div>
+            <div class="field field--float"><select id="fCity" name="city"></select><label for="fCity">Departamento</label></div>
+            <fieldset class="field"><legend>¿Cómo querés recibirlo?</legend>
               <div class="radios">
                 <label><input type="radio" name="delivery" value="Envío a domicilio" checked /> <span>Envío a domicilio</span></label>
                 <label><input type="radio" name="delivery" value="Envío a terminal / courier" /> <span>Courier / terminal</span></label>
                 <label><input type="radio" name="delivery" value="Entrega en Santa Cruz" /> <span>Entrega en Santa Cruz</span></label>
               </div>
             </fieldset>
-            <div class="field"><label for="fAddr">Dirección o zona <small>(opcional)</small></label><input id="fAddr" name="addr" autocomplete="street-address" placeholder="Barrio, calle, referencia" /></div>
-            <fieldset class="field"><legend>Pago</legend>
+            <div class="field field--float"><input id="fAddr" name="addr" autocomplete="street-address" placeholder="Dirección o zona" /><label for="fAddr">Dirección o zona (opcional)</label></div>
+            <fieldset class="field"><legend>¿Cómo vas a pagar?</legend>
               <div class="radios">
                 <label><input type="radio" name="pay" value="QR" checked /> <span>QR</span></label>
                 <label><input type="radio" name="pay" value="Transferencia" /> <span>Transferencia</span></label>
                 <label><input type="radio" name="pay" value="Efectivo" /> <span>Efectivo</span></label>
               </div>
             </fieldset>
-            <div class="field"><label for="fNote">Nota <small>(opcional)</small></label><textarea id="fNote" name="note" rows="2" placeholder="Es para regalo, horario de entrega…"></textarea></div>
+            <div class="field field--float"><textarea id="fNote" name="note" rows="2" placeholder="Nota"></textarea><label for="fNote">Nota: regalo, horario de entrega… (opcional)</label></div>
           </form>
           <div class="pane__nav">
-            <button class="btn btn--line" id="stepBack" hidden>← Atrás</button>
-            <button class="btn btn--dark" id="stepNext">Continuar →</button>
+            <button class="link link--back" id="stepBack" hidden>Atrás</button>
+            <button class="btn btn--dark" id="stepNext">Continuar</button>
           </div>
         </div>
         <aside class="summary" aria-label="Resumen del pedido">

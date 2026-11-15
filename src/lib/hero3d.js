@@ -1,9 +1,9 @@
-// WebGL hero: a slowly turning ring of curved cards (real catalog photos) with a
+// WebGL 360° gallery: a slowly turning ring of curved cards (real catalog photos) with a
 // glossy floor reflection. Drag to spin, hover to tilt, scroll to push it away.
 import * as THREE from 'three';
 import gsap from 'gsap';
 
-export function initHero3D(canvas, items, { onFront, onPick, reduced = false } = {}) {
+export function initHero3D(canvas, items, { onFront, onPick, reduced = false, bg = '#000000' } = {}) {
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -13,7 +13,7 @@ export function initHero3D(canvas, items, { onFront, onPick, reduced = false } =
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
-  const BG = new THREE.Color('#0c0907');
+  const BG = new THREE.Color(bg);
   scene.fog = new THREE.Fog(BG, 8, 17);
 
   const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
