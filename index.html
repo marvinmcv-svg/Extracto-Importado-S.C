@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Extracto Importado — Perfumes de alta concentración · Santa Cruz, Bolivia</title>
-  <meta name="description" content="Expertos en equivalencias de perfumes. Más de 150 fragancias de 100 ml con más de 8 horas de duración, y decants de 5, 10 y 30 ml. Envíos gratis a toda Bolivia." />
-  <meta name="theme-color" content="#0b0907" />
+  <meta name="description" content="Expertos en equivalencias de perfumes. 156 fragancias de alta concentración: 100 ml desde 410 Bs. y decants de 5, 10 y 30 ml. Envío gratis a toda Bolivia en 100 ml. Pedidos por WhatsApp." />
+  <meta name="theme-color" content="#f4eee5" />
   <meta property="og:title" content="Extracto Importado — Tu aroma habla de vos" />
-  <meta property="og:description" content="+150 fragancias de alta concentración, 100 ml desde 410 Bs. Envíos gratis a toda Bolivia." />
+  <meta property="og:description" content="156 fragancias de alta concentración, 100 ml desde 410 Bs. Envío gratis a toda Bolivia." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/img/still-life.jpg" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="/img/still-life.jpg" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,6 +22,7 @@
     "name": "Extracto Importado",
     "description": "Expertos en equivalencias de perfumes. Distribuidor autorizado. Precios por mayor y menor.",
     "telephone": "+591 65907181",
+    "image": "/img/still-life.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Santa Cruz de la Sierra", "addressCountry": "BO" },
     "sameAs": ["https://www.instagram.com/extractoimportado_sc/"],
     "priceRange": "Bs. 50 – Bs. 1260"
@@ -28,311 +30,351 @@
   </script>
 </head>
 <body>
-  <a class="skip" href="#catalogo">Saltar al catálogo</a>
+  <a class="skip" href="#tienda">Saltar a la tienda</a>
 
-  <!-- Preloader -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__mark">
-      <span class="loader__word">EXTRACTO</span>
-      <span class="loader__sub"><i></i>IMPORTADO<i></i></span>
+  <div class="topbar">
+    <div class="topbar__track">
+      <span>Envío gratis a toda Bolivia en perfumes de 100 ml</span>
+      <span>2 perfumes × 690 Bs. · 4 perfumes × 1.260 Bs.</span>
+      <span>Pedidos por WhatsApp · 659 071 81</span>
     </div>
-    <div class="loader__bar"><span id="loaderBar"></span></div>
-    <div class="loader__count"><span id="loaderCount">0</span>%</div>
   </div>
 
-  <div class="cursor" id="cursor"><span class="cursor__label" id="cursorLabel"></span></div>
-  <div class="grain" aria-hidden="true"></div>
-
-  <!-- Nav -->
   <header class="nav" id="nav">
-    <a href="#top" class="logo" aria-label="Extracto Importado, inicio">
-      <span class="logo__word">EXTRACTO</span>
-      <span class="logo__sub"><i></i>IMPORTADO<i></i></span>
-    </a>
-    <nav class="nav__links" aria-label="Principal">
-      <a href="#favoritos">Favoritos</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#finder">Tu aroma</a>
-      <a href="#precios">Precios</a>
-      <a href="#pedido">Pedidos</a>
-    </nav>
-    <a class="btn btn--ghost btn--sm nav__cta" data-wa="Hola Extracto Importado ✨ quiero ver el CATÁLOGO" href="#" target="_blank" rel="noopener">
-      <span>WhatsApp</span>
-    </a>
-    <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <div class="nav__inner">
+      <a href="#top" class="logo" aria-label="Extracto Importado, inicio">
+        <span class="logo__word">EXTRACTO</span>
+        <span class="logo__sub"><i></i>IMPORTADO<i></i></span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#tienda" data-gender="femenino">Para ella</a>
+        <a href="#tienda" data-gender="masculino">Para él</a>
+        <a href="#tienda" data-gender="unisex">Unisex</a>
+        <a href="#precios">Precios</a>
+        <a href="#pedido">Hacer pedido</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="openSearch" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="openCart" aria-label="Ver pedido">
+          <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M5 8h14l-1.2 12H6.2L5 8Zm4 0V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-btn__count" id="cartCount" hidden>0</span>
+        </button>
+      </div>
+    </div>
   </header>
-
-  <div class="menu" id="menu" aria-hidden="true">
-    <a href="#favoritos">Favoritos</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#finder">Tu aroma</a>
-    <a href="#precios">Precios</a>
-    <a href="#pedido">Pedidos</a>
-    <p class="menu__foot">Santa Cruz · Bolivia · 659 071 81</p>
-  </div>
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero__glow" id="heroGlow"></div>
-      <canvas class="hero__canvas" id="heroCanvas" aria-label="Frasco Extracto Importado de 100 ml en 3D" role="img"></canvas>
-      <div class="hero__fallback" aria-hidden="true"></div>
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Santa Cruz · Bolivia — Expertos en equivalencias</p>
+        <h1 class="hero__title">El perfume que amás, <em>en versión Extracto.</em></h1>
+        <p class="hero__lead">156 fragancias de alta concentración inspiradas en las casas más deseadas del mundo. <strong>+8 horas</strong> en tu piel, <strong>100 ml desde 410 Bs.</strong></p>
 
-      <div class="hero__meta hero__meta--tl reveal-hero">
-        <span>Parfum · 100 ml · 3.4 fl.oz</span>
-        <span>Santa Cruz de la Sierra</span>
-      </div>
-      <div class="hero__meta hero__meta--tr reveal-hero">
-        <span>Expertos en equivalencias</span>
-        <span>Distribuidor autorizado</span>
-      </div>
-
-      <h1 class="hero__title">
-        <span class="sr-only">Extracto Importado — perfumes de alta concentración</span>
-        <span class="hero__line" aria-hidden="true"><span class="split">Tu aroma</span></span>
-        <span class="hero__line hero__line--italic" aria-hidden="true"><span class="split">habla de vos</span></span>
-      </h1>
-
-      <div class="hero__bottom">
-        <p class="hero__lead reveal-hero">Más de <strong>150 fragancias</strong> de alta concentración, inspiradas en las casas más deseadas del mundo. <strong>+8 horas</strong> en tu piel.</p>
-
-        <div class="hero__picker reveal-hero" role="group" aria-label="Elegí un aroma">
-          <p class="hero__picker-label">Probá un aroma</p>
-          <div class="hero__swatches" id="heroSwatches"></div>
-          <p class="hero__picker-name" id="heroScentName" aria-live="polite">Yara</p>
+        <div class="hsearch" id="heroSearch">
+          <label class="hsearch__box">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+            <span class="sr-only">¿Qué perfume usás?</span>
+            <input type="search" id="heroInput" placeholder="¿Qué perfume usás? Sauvage, Yara, Good Girl…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="heroResults" />
+          </label>
+          <div class="hsearch__results" id="heroResults" role="listbox" hidden></div>
         </div>
-
-        <div class="hero__price reveal-hero">
-          <span>100 ml desde</span>
-          <strong>410<small> Bs.</small></strong>
-          <span>Envío gratis a todo el país</span>
+        <div class="hero__popular">
+          <span>Más buscados:</span>
+          <button data-q="Yara">Yara</button>
+          <button data-q="Sauvage">Sauvage</button>
+          <button data-q="Good Girl">Good Girl</button>
+          <button data-q="Baccarat">Baccarat Rouge</button>
+          <button data-q="Million">1 Million</button>
         </div>
       </div>
-    </section>
 
-    <!-- MARQUEE -->
-    <section class="marquee" aria-label="Beneficios">
-      <div class="marquee__track" id="marquee">
-        <span>+8 horas de duración</span><i>✦</i>
-        <span>Alta concentración</span><i>✦</i>
-        <span>Productos originales</span><i>✦</i>
-        <span>Envíos gratis a toda Bolivia</span><i>✦</i>
-        <span>Precios por mayor y menor</span><i>✦</i>
-        <span>Compra 100% segura</span><i>✦</i>
-      </div>
-    </section>
-
-    <!-- MANIFESTO -->
-    <section class="manifesto" id="manifesto">
-      <p class="eyebrow">— Nuestra esencia</p>
-      <p class="manifesto__text" id="manifestoText">
-        Un perfume no es un lujo, es una firma. Por eso traemos las fragancias más deseadas del mundo en versiones de alta concentración, intensas y duraderas, a un precio que se siente tan bien como su aroma.
-      </p>
-      <div class="manifesto__stats">
-        <div class="stat"><span class="stat__num" data-count="150" data-suffix="+">0</span><span class="stat__label">fragancias en catálogo</span></div>
-        <div class="stat"><span class="stat__num" data-count="8" data-suffix="h+">0</span><span class="stat__label">de duración en piel</span></div>
-        <div class="stat"><span class="stat__num" data-count="100" data-suffix=" ml">0</span><span class="stat__label">por frasco</span></div>
-        <div class="stat"><span class="stat__num" data-count="3432" data-suffix="+">0</span><span class="stat__label">seguidores en Instagram</span></div>
-      </div>
-    </section>
-
-    <!-- EDITORIAL: THE FLASK -->
-    <section class="flask" id="frasco">
-      <figure class="flask__photo" data-cursor="Extracto">
-        <div class="flask__img"><img src="/img/still-life.jpg" alt="Dos frascos Extracto Importado Parfum de 100 ml sobre corteza, con lavanda y flores blancas" loading="lazy" width="566" height="731" /></div>
-        <figcaption>Parfum · 100 ml · 3.4 fl.oz</figcaption>
-      </figure>
-      <div class="flask__copy">
-        <p class="eyebrow">— El frasco</p>
-        <h2 class="display">Vidrio grueso.<br/><em>Esencia pura.</em></h2>
-        <p>Cada Extracto llega en nuestro frasco de vidrio cuadrado de 100 ml, con tapa negra mate y etiqueta crema. Sobrio, elegante y hecho para quedarse en tu tocador.</p>
-        <ul class="flask__specs">
-          <li><span>Concentración</span><strong>Extracto · Parfum</strong></li>
-          <li><span>Duración</span><strong>+8 horas</strong></li>
-          <li><span>Formatos</span><strong>100 · 30 · 10 · 5 ml</strong></li>
-          <li><span>Envío</span><strong>Toda Bolivia</strong></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAVORITES -->
-    <section class="collection" id="favoritos">
-      <div class="section-head">
-        <p class="eyebrow">— Favoritos & novedades</p>
-        <h2 class="display">Los que <em>dejan huella</em></h2>
-        <p class="section-head__sub">Lo más pedido de la temporada, recién destacado en nuestro Instagram. Pasá el cursor sobre cada frasco.</p>
-      </div>
-      <div class="grid" id="grid"></div>
-    </section>
-
-    <!-- NOTES / HORIZONTAL -->
-    <section class="notes" id="notas">
-      <div class="notes__pin" id="notesPin">
-        <div class="notes__intro">
-          <p class="eyebrow">— Anatomía de un perfume</p>
-          <h2 class="display">Tres actos,<br/><em>una historia.</em></h2>
-          <p>Cada fragancia se revela en capas. Así vive en tu piel durante el día.</p>
-        </div>
-        <div class="notes__track" id="notesTrack">
-          <article class="act">
-            <span class="act__num">I</span>
-            <span class="act__time">0 — 15 min</span>
-            <h3>Notas de salida</h3>
-            <p>La primera impresión. Cítricos, frutas y especias brillantes que despiertan el aroma al primer contacto.</p>
-            <ul><li>Bergamota</li><li>Frambuesa</li><li>Pimienta</li><li>Pera</li></ul>
-            <div class="act__orb" style="--c1:#f4e33a;--c2:#f0532e"></div>
-          </article>
-          <article class="act">
-            <span class="act__num">II</span>
-            <span class="act__time">15 min — 3 h</span>
-            <h3>Notas de corazón</h3>
-            <p>El alma del perfume. Flores, café y caramelo que definen su personalidad.</p>
-            <ul><li>Rosa</li><li>Jazmín</li><li>Café</li><li>Caramelo</li></ul>
-            <div class="act__orb" style="--c1:#f06a9b;--c2:#8b2f3a"></div>
-          </article>
-          <article class="act">
-            <span class="act__num">III</span>
-            <span class="act__time">3 h — 8 h+</span>
-            <h3>Notas de fondo</h3>
-            <p>Lo que queda. Maderas, vainilla, ámbar y oud: la estela que te hace inolvidable.</p>
-            <ul><li>Vainilla</li><li>Oud</li><li>Ámbar</li><li>Cuero</li></ul>
-            <div class="act__orb" style="--c1:#d4a24c;--c2:#3a2408"></div>
-          </article>
+      <div class="hero__visual">
+        <figure class="hero__photo">
+          <img src="/img/still-life.jpg" alt="Dos frascos Extracto Importado Parfum de 100 ml sobre corteza, con lavanda y flores blancas" width="566" height="731" fetchpriority="high" />
+        </figure>
+        <div class="compare" id="compare" aria-live="polite">
+          <p class="compare__tag">Original <span>vs</span> Extracto</p>
+          <div class="compare__img"><img id="compareImg" alt="" width="760" height="440" /></div>
+          <div class="compare__bar">
+            <div>
+              <p class="compare__name" id="compareName"></p>
+              <p class="compare__house" id="compareHouse"></p>
+            </div>
+            <button class="btn btn--dark btn--sm" id="compareAdd">Agregar · 410 Bs.</button>
+          </div>
+          <div class="compare__dots" id="compareDots"></div>
         </div>
       </div>
     </section>
 
-    <!-- FULL CATALOG -->
-    <section class="catalog" id="catalogo">
-      <div class="section-head">
-        <p class="eyebrow">— Catálogo completo</p>
-        <h2 class="display">Encontrá tu <em>equivalencia</em></h2>
-        <p class="section-head__sub">Buscá por el nombre del perfume original o explorá por familia. Cada barra muestra sus acordes principales, del más intenso al más sutil.</p>
-      </div>
+    <!-- TRUST -->
+    <ul class="trust">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6l-8-3Zm-1.2 12.6-3.3-3.3 1.4-1.4 1.9 1.9 4.6-4.6 1.4 1.4-6 6Z"/></svg><div><strong>Productos originales</strong><span>Distribuidor autorizado</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 7 6 10.3 6 13.5a6 6 0 0 0 12 0C18 10.3 16 7 12 2Zm0 17a4 4 0 0 1-4-4h2a2 2 0 0 0 2 2v2Z"/></svg><div><strong>Alta concentración</strong><span>Extracto · Parfum · +8 h</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3V7Zm11 3h4l3 3v3h-7v-6ZM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg><div><strong>Envío gratis</strong><span>A toda Bolivia en 100 ml</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg><div><strong>Compra 100% segura</strong><span>Atención por WhatsApp</span></div></li>
+    </ul>
 
-      <div class="catalog__controls">
-        <label class="search">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
-          <span class="sr-only">Buscar fragancia</span>
-          <input id="search" type="search" placeholder="Buscá: Sauvage, Yara, Good Girl…" autocomplete="off" />
-        </label>
-        <div class="tabs" id="genderTabs" role="tablist" aria-label="Filtrar por línea"></div>
-      </div>
-      <div class="chips" id="accordChips" aria-label="Filtrar por familia olfativa"></div>
-      <p class="catalog__count" id="catalogCount" aria-live="polite"></p>
-      <div class="catalog__list" id="catalogList"></div>
-      <div class="catalog__more">
-        <button class="btn btn--ghost" id="loadMore"><span>Ver más fragancias</span></button>
-      </div>
+    <!-- CATEGORIES -->
+    <section class="cats" aria-label="Comprar por categoría">
+      <a class="cat" href="#tienda" data-gender="femenino">
+        <img src="/img/p/carolina-herrera-good-girl.webp" alt="" loading="lazy" />
+        <div class="cat__label"><span>Para ella</span><small id="countF"></small></div>
+      </a>
+      <a class="cat" href="#tienda" data-gender="masculino">
+        <img src="/img/p/dior-sauvage.webp" alt="" loading="lazy" />
+        <div class="cat__label"><span>Para él</span><small id="countM"></small></div>
+      </a>
+      <a class="cat" href="#tienda" data-gender="unisex">
+        <img src="/img/p/maison-francis-kurkdjian-baccarat-rouge-540.webp" alt="" loading="lazy" />
+        <div class="cat__label"><span>Unisex & nicho</span><small id="countU"></small></div>
+      </a>
+      <a class="cat cat--decant" href="#precios">
+        <img src="/img/precios.jpg" alt="" loading="lazy" />
+        <div class="cat__label"><span>Decants</span><small>5 · 10 · 30 ml desde 50 Bs.</small></div>
+      </a>
     </section>
 
-    <!-- FINDER -->
-    <section class="finder" id="finder">
-      <div class="finder__card">
-        <div class="finder__head">
-          <p class="eyebrow">— Encontrá tu aroma</p>
-          <h2 class="display">Tres preguntas.<br/><em>Tu fragancia.</em></h2>
+    <!-- BESTSELLERS -->
+    <section class="shelf" id="favoritos">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Lo más pedido</p>
+          <h2 class="h2">Los que <em>dejan huella</em></h2>
         </div>
-        <div class="finder__progress"><span id="finderBar"></span></div>
-        <div class="finder__stage" id="finderStage" aria-live="polite"></div>
+        <div class="shelf__arrows">
+          <button class="icon-btn icon-btn--line" data-scroll="-1" aria-label="Anteriores">←</button>
+          <button class="icon-btn icon-btn--line" data-scroll="1" aria-label="Siguientes">→</button>
+        </div>
       </div>
+      <div class="shelf__rail" id="bestRail"></div>
     </section>
 
     <!-- PRICING -->
     <section class="pricing" id="precios">
-      <div class="section-head">
-        <p class="eyebrow">— Precios & promociones</p>
-        <h2 class="display">Más perfume, <em>mejor precio</em></h2>
-        <p class="section-head__sub">Frascos de 100 ml con envío gratis a todo el país. Combiná los aromas que quieras. Precios por mayor disponibles — consultanos.</p>
+      <div class="pricing__art">
+        <img src="/img/precios.jpg" alt="Lista de precios Extracto Importado: 1 perfume de 100 ml 410 Bs., 2 por 690 Bs., 4 por 1.260 Bs.; decants de 5, 10 y 30 ml" loading="lazy" width="1254" height="1254" />
       </div>
-
-      <div class="tiers" id="tiers"></div>
-
-      <div class="decants">
-        <div class="decants__intro">
-          <h3 class="display display--sm">Decants <em>para probar</em><br/>y llevar con vos</h3>
-          <p>¿Querés descubrir antes de elegir tu frasco? Llevá tus aromas favoritos en formato viaje.</p>
+      <div class="pricing__copy">
+        <p class="eyebrow">Precios & promociones</p>
+        <h2 class="h2">Más perfume,<br/><em>mejor precio.</em></h2>
+        <p class="muted">Combiná los aromas que quieras: el descuento se aplica solo en tu pedido.</p>
+        <div class="tiers">
+          <div class="tier"><span>1 perfume 100 ml</span><strong>410 <small>Bs.</small></strong></div>
+          <div class="tier tier--hot"><span>2 perfumes 100 ml</span><strong>690 <small>Bs.</small></strong><em>Ahorrás 130</em></div>
+          <div class="tier"><span>4 perfumes 100 ml</span><strong>1.260 <small>Bs.</small></strong><em>Ahorrás 380</em></div>
         </div>
-        <div class="decants__list" id="decants"></div>
+        <table class="decants">
+          <caption>Decants — para probar y llevar</caption>
+          <thead><tr><th>Formato</th><th>1 unidad</th><th>Promo</th></tr></thead>
+          <tbody>
+            <tr><td>5 ml</td><td>50 Bs.</td><td>3 × 135 Bs.</td></tr>
+            <tr><td>10 ml</td><td>90 Bs.</td><td>3 × 240 Bs.</td></tr>
+            <tr><td>30 ml</td><td>210 Bs.</td><td>2 × 370 Bs.</td></tr>
+          </tbody>
+        </table>
       </div>
-
-      <ul class="badges" id="badges"></ul>
     </section>
 
-    <!-- ORDER -->
+    <!-- SHOP -->
+    <section class="shop" id="tienda">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Catálogo completo</p>
+          <h2 class="h2">Encontrá tu <em>equivalencia</em></h2>
+        </div>
+        <p class="muted head__sub">Buscá por el nombre del perfume original. Cada foto muestra el original junto a nuestra versión y sus acordes principales.</p>
+      </div>
+
+      <div class="filters" id="filters">
+        <label class="search">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+          <span class="sr-only">Buscar en el catálogo</span>
+          <input id="shopSearch" type="search" placeholder="Buscar perfume o marca" autocomplete="off" />
+        </label>
+        <div class="seg" id="genderTabs" role="tablist" aria-label="Línea"></div>
+        <label class="select">
+          <span class="sr-only">Ordenar</span>
+          <select id="sort">
+            <option value="catalog">Orden del catálogo</option>
+            <option value="az">Nombre A–Z</option>
+            <option value="house">Por marca</option>
+          </select>
+        </label>
+      </div>
+      <div class="chips" id="accordChips" aria-label="Familia olfativa"></div>
+      <p class="shop__count" id="shopCount" aria-live="polite"></p>
+      <div class="grid" id="shopGrid"></div>
+      <div class="shop__more"><button class="btn btn--line" id="loadMore">Ver más fragancias</button></div>
+    </section>
+
+    <!-- BRAND -->
+    <section class="brand">
+      <figure class="brand__collage"><img src="/img/collage.jpg" alt="Collage de frascos Extracto Importado" loading="lazy" width="746" height="1083" /></figure>
+      <div class="brand__copy">
+        <img class="brand__logo" src="/img/logo.jpg" alt="Extracto Importado" loading="lazy" width="566" height="161" />
+        <p class="brand__quote">“Un perfume no es un lujo, es una firma.”</p>
+        <p class="muted">Traemos las fragancias más deseadas del mundo en versiones de alta concentración, intensas y duraderas, a un precio que se siente tan bien como su aroma. Cada Extracto llega en nuestro frasco cuadrado de vidrio de 100 ml, tapa negra y etiqueta crema.</p>
+        <dl class="specs">
+          <div><dt>Concentración</dt><dd>Extracto · Parfum</dd></div>
+          <div><dt>Duración</dt><dd>+8 horas</dd></div>
+          <div><dt>Formatos</dt><dd>100 · 30 · 10 · 5 ml</dd></div>
+          <div><dt>Ventas</dt><dd>Por mayor y menor</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ORDER FUNNEL -->
     <section class="order" id="pedido">
-      <div class="section-head section-head--center">
-        <p class="eyebrow">— Cómo pedir</p>
-        <h2 class="display">Tu perfume, <em>a un mensaje</em></h2>
+      <div class="order__head">
+        <p class="eyebrow">Pedido por WhatsApp</p>
+        <h2 class="h2">Armá tu pedido <em>en 3 pasos.</em></h2>
+        <p class="muted">Elegí tus fragancias, el formato y tus datos. Te abrimos WhatsApp con el pedido listo para enviar a nuestra atención al cliente.</p>
       </div>
-      <ol class="steps">
-        <li class="step">
-          <span class="step__n">01</span>
-          <h3>Escribinos</h3>
-          <p>Mandá <strong>“CATÁLOGO”</strong> por WhatsApp al 659 071 81 y contanos qué aromas te gustan.</p>
-        </li>
-        <li class="step">
-          <span class="step__n">02</span>
-          <h3>Te asesoramos</h3>
-          <p>Te ayudamos a elegir la fragancia que va con vos, para vos o para regalar.</p>
-        </li>
-        <li class="step">
-          <span class="step__n">03</span>
-          <h3>Lo recibís</h3>
-          <p>Envíos a toda Bolivia. <strong>Gratis</strong> en perfumes de 100 ml.</p>
-        </li>
+
+      <ol class="steps" id="steps">
+        <li class="steps__item is-active" data-step="1"><span>1</span>Fragancias</li>
+        <li class="steps__item" data-step="2"><span>2</span>Formato</li>
+        <li class="steps__item" data-step="3"><span>3</span>Tus datos</li>
       </ol>
-    </section>
 
-    <!-- INSTAGRAM -->
-    <section class="journal" id="journal">
-      <div class="section-head">
-        <p class="eyebrow">— @extractoimportado_sc</p>
-        <h2 class="display">Desde <em>Instagram</em></h2>
+      <div class="order__grid">
+        <div class="order__panel">
+          <!-- Step 1 -->
+          <div class="pane is-active" data-pane="1">
+            <label class="search search--lg">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+              <span class="sr-only">Buscar fragancia</span>
+              <input id="pickSearch" type="search" placeholder="Buscá la fragancia (ej. Sauvage, Yara, Libre)" autocomplete="off" />
+            </label>
+            <div class="seg seg--sm" id="pickTabs"></div>
+            <div class="picklist" id="pickList"></div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="pane" data-pane="2">
+            <p class="pane__hint">Elegí el formato y la cantidad de cada fragancia. Las promos se aplican solas.</p>
+            <div class="lines" id="lines"></div>
+          </div>
+
+          <!-- Step 3 -->
+          <form class="pane form" data-pane="3" id="orderForm" novalidate>
+            <div class="field"><label for="fName">Nombre</label><input id="fName" name="name" autocomplete="name" required placeholder="Tu nombre" /></div>
+            <div class="field"><label for="fCity">Departamento</label><select id="fCity" name="city"></select></div>
+            <fieldset class="field">
+              <legend>Entrega</legend>
+              <div class="radios">
+                <label><input type="radio" name="delivery" value="Envío a domicilio" checked /> <span>Envío a domicilio</span></label>
+                <label><input type="radio" name="delivery" value="Envío a terminal / courier" /> <span>Courier / terminal</span></label>
+                <label><input type="radio" name="delivery" value="Entrega en Santa Cruz" /> <span>Entrega en Santa Cruz</span></label>
+              </div>
+            </fieldset>
+            <div class="field"><label for="fAddr">Dirección o zona <small>(opcional)</small></label><input id="fAddr" name="addr" autocomplete="street-address" placeholder="Barrio, calle, referencia" /></div>
+            <fieldset class="field">
+              <legend>Pago</legend>
+              <div class="radios">
+                <label><input type="radio" name="pay" value="QR" checked /> <span>QR</span></label>
+                <label><input type="radio" name="pay" value="Transferencia" /> <span>Transferencia</span></label>
+                <label><input type="radio" name="pay" value="Efectivo" /> <span>Efectivo</span></label>
+              </div>
+            </fieldset>
+            <div class="field"><label for="fNote">Nota <small>(opcional)</small></label><textarea id="fNote" name="note" rows="2" placeholder="Es para regalo, horario de entrega…"></textarea></div>
+          </form>
+
+          <div class="pane__nav">
+            <button class="btn btn--line" id="stepBack" hidden>← Atrás</button>
+            <button class="btn btn--dark" id="stepNext">Continuar →</button>
+          </div>
+        </div>
+
+        <aside class="summary" aria-label="Resumen del pedido">
+          <p class="summary__title">Tu pedido</p>
+          <div class="summary__items" id="summaryItems"></div>
+          <div class="summary__totals" id="summaryTotals"></div>
+          <button class="btn btn--wa btn--block" id="sendWa" disabled>
+            <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.5 6.5 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 5c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.4-.4Z"/></svg>
+            <span>Enviar pedido por WhatsApp</span>
+          </button>
+          <p class="summary__note">Confirmamos stock, total y envío por WhatsApp antes de cobrar.</p>
+        </aside>
       </div>
-      <div class="journal__rail" id="journalRail"></div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta" id="cta">
-      <div class="cta__bg" aria-hidden="true"></div>
-      <p class="eyebrow">— Santa Cruz · Bolivia</p>
-      <h2 class="cta__title">¿Cuál será<br/><em>tu firma?</em></h2>
-      <a class="btn btn--gold btn--xl magnetic" data-wa="Hola Extracto Importado 👋 quiero ver el CATÁLOGO" href="#" target="_blank" rel="noopener" data-cursor="Escribir">
-        <span>Pedir por WhatsApp</span>
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M5 12h12.6l-4.3-4.3 1.4-1.4L21.4 13l-6.7 6.7-1.4-1.4 4.3-4.3H5z"/></svg>
-      </a>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="head"><div><p class="eyebrow">Preguntas frecuentes</p><h2 class="h2">Antes de <em>pedir</em></h2></div></div>
+      <div class="faq__list" id="faqList"></div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer__big" aria-hidden="true">EXTRACTO</div>
     <div class="footer__cols">
       <div>
-        <p class="footer__h">Extracto Importado</p>
-        <p>Expertos en equivalencias 🇦🇷 🇧🇴<br/>Distribuidor autorizado.</p>
+        <a href="#top" class="logo logo--light" aria-label="Extracto Importado">
+          <span class="logo__word">EXTRACTO</span>
+          <span class="logo__sub"><i></i>IMPORTADO<i></i></span>
+        </a>
+        <p>Expertos en equivalencias 🇦🇷 🇧🇴<br/>Distribuidor autorizado · Santa Cruz de la Sierra</p>
+      </div>
+      <div>
+        <p class="footer__h">Tienda</p>
+        <a href="#tienda" data-gender="femenino">Para ella</a>
+        <a href="#tienda" data-gender="masculino">Para él</a>
+        <a href="#tienda" data-gender="unisex">Unisex</a>
+        <a href="#precios">Precios y decants</a>
       </div>
       <div>
         <p class="footer__h">Contacto</p>
-        <p><a data-wa="Hola Extracto Importado" href="#" target="_blank" rel="noopener">WhatsApp 659 071 81</a><br/>
-        <a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">Instagram @extractoimportado_sc</a></p>
-      </div>
-      <div>
-        <p class="footer__h">Envíos</p>
-        <p>Santa Cruz de la Sierra.<br/>Envíos a toda Bolivia — por mayor y menor.</p>
+        <a data-wa="Hola Extracto Importado 👋" href="#" target="_blank" rel="noopener">WhatsApp 659 071 81</a>
+        <a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">Instagram @extractoimportado_sc</a>
+        <a href="#pedido">Hacer un pedido</a>
       </div>
     </div>
-    <p class="footer__legal">© <span id="year"></span> Extracto Importado. Nuestras fragancias son versiones inspiradas (equivalencias); las marcas mencionadas pertenecen a sus respectivos dueños y se usan únicamente como referencia olfativa.</p>
+    <p class="footer__legal">© <span id="year"></span> Extracto Importado. Nuestras fragancias son versiones inspiradas (equivalencias); las marcas y fotos de frascos originales se muestran únicamente como referencia olfativa y pertenecen a sus respectivos dueños.</p>
   </footer>
 
-  <a class="wa-float" data-wa="Hola Extracto Importado 👋" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <!-- Floating WhatsApp -->
+  <a class="wa-float" data-wa="Hola Extracto Importado 👋 quiero hacer una consulta" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
     <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.5 6.5 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 5c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.4-.4Z"/></svg>
   </a>
 
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal__backdrop" data-close></div>
-    <div class="modal__panel" id="modalPanel"></div>
+  <!-- Cart drawer -->
+  <div class="drawer" id="cart" aria-hidden="true">
+    <div class="drawer__backdrop" data-close></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer__head">
+        <p id="cartTitle">Tu pedido</p>
+        <button class="icon-btn" data-close aria-label="Cerrar">✕</button>
+      </div>
+      <div class="drawer__body" id="cartBody"></div>
+      <div class="drawer__foot" id="cartFoot"></div>
+    </aside>
   </div>
+
+  <!-- Product modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="pmTitle" id="modalPanel"></div>
+  </div>
+
+  <!-- Search overlay (mobile + nav) -->
+  <div class="sheet" id="searchSheet" aria-hidden="true">
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-label="Buscar">
+      <label class="search search--lg">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
+        <span class="sr-only">Buscar</span>
+        <input id="sheetInput" type="search" placeholder="Buscá un perfume o marca" autocomplete="off" />
+        <button class="icon-btn" data-close aria-label="Cerrar">✕</button>
+      </label>
+      <div class="sheet__results" id="sheetResults"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script type="module" src="/src/main.js"></script>
 </body>
