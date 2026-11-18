@@ -18,7 +18,6 @@ const state = {
 const navKey = state.line === 'femenino' ? 'ella' : state.line === 'masculino' ? 'el' : 'tienda';
 $$('.nav__links a').forEach((a) => a.toggleAttribute('aria-current', a.getAttribute('href') === (navKey === 'tienda' ? '/tienda' : `/tienda?linea=${state.line}`)));
 $('#q').value = state.q;
-$$('.subnav__links a:not(.btn)').forEach((a) => a.toggleAttribute('aria-current', a.getAttribute('href') === (state.line === 'all' ? '/tienda' : `/tienda?linea=${state.line}`)));
 if (state.line !== 'all') $('#shopTitle').innerHTML = { femenino: 'Para <i>ella.</i>', masculino: 'Para <i>él.</i>', unisex: 'Unisex <i>y nicho.</i>' }[state.line];
 
 function filtered({ skip } = {}) {

@@ -5,7 +5,7 @@ Tienda online de **Extracto Importado** (Santa Cruz, Bolivia): equivalencias de 
 ## Páginas
 | Ruta | Archivo | Contenido |
 |---|---|---|
-| `/` | `index.html` | Frasco 3D con historia en scroll, marcas, destacados (bento), líneas, más pedidos, galería 360°, Black Friday, por qué comprar, asesor, cómo pedir |
+| `/` | `index.html` | Hero de oro líquido + frasco 3D, casas, manifiesto, tres caminos, familias olfativas, más pedidos, el frasco, galería 360°, Black Friday, asesor, el ritual |
 | `/tienda` | `tienda.html` | Catálogo con filtros (línea, familia, casa), búsqueda y orden. Acepta `?linea=`, `?familia=`, `?casa=`, `?q=` |
 | `/producto?id=…` | `producto.html` | Ficha: foto, acordes, formatos, cantidad, similares |
 | `/precios` | `precios.html` | Promos, decants, calculadora de combos, envíos |
@@ -13,12 +13,12 @@ Tienda online de **Extracto Importado** (Santa Cruz, Bolivia): equivalencias de 
 | `/pedido` | `pedido.html` | Pedido en 3 pasos → WhatsApp |
 | `/ayuda` | `ayuda.html` | Preguntas frecuentes, envíos, pagos, contacto |
 
-## Diseño
-Lenguaje visual estilo Apple: tipografía SF Pro / Inter con tracking ajustado, superficies `#f5f5f7`, botones píldora azules y enlaces “Más ›”, navegación translúcida con blur, sub-navegación fija por página, cinta promocional, inputs con etiqueta flotante y un footer sobrio. El dorado-ámbar de la marca aparece como degradado en titulares y números.
+## Diseño — "Noir Ambré"
+Alta perfumería en clave oscura: negro tinta cálido, tipografía marfil (Instrument Serif + Manrope, Cinzel solo en el logotipo) y acentos de oro líquido. Arcos, filetes finos y grano de película.
 
-- **Hero 3D** (`src/lib/bottle3d.js`): el frasco Extracto de 100 ml en WebGL — vidrio con transmisión/refracción, jugo ámbar, tapa negra mate, collar dorado y etiqueta crema — con reflejos de estudio (RoomEnvironment) y luces de borde de color. Una historia con scroll (`#story`, GSAP scrub) lo gira, lo mueve y le levanta la tapa mientras aparecen los textos.
-- **Movimiento**: bento de destacados con tilt 3D y brillo, línea de productos con imágenes que suben, carril horizontal fijado de “Lo más pedido”, foto que se reduce de pantalla completa a tarjeta, galería 3D 360° (`src/lib/hero3d.js`, se carga al acercarse), banda Black Friday con resplandor, asesor con borde animado tipo Apple Intelligence.
-- Todo respeta `prefers-reduced-motion` y tiene alternativa sin WebGL.
+- **Hero WebGL** (`src/lib/bottle3d.js`): un campo de humo de oro líquido (shader fbm con *domain warping*) que el cursor revuelve, y delante el frasco Extracto de 100 ml en vidrio con transmisión real: refracta el humo que tiene detrás. Al bajar, el frasco sube, gira y levanta la tapa.
+- **Movimiento** (GSAP + Lenis): precarga con contador, titulares que suben letra por letra, marquesina de casas que acelera con el scroll, manifiesto con píldoras de imagen, arcos con parallax, lista de familias olfativas con vista previa flotante, carril fijado de "Lo más pedido", galería 3D 360°, "350 Bs." gigante que se desliza, orbe del asesor, cortina dorada entre páginas.
+- **Detalles**: cursor propio (anillo con etiqueta), menú a pantalla completa con previsualización en arco, footer monumental. Respeta `prefers-reduced-motion` y tiene alternativa sin WebGL.
 
 ## Stack
 Vite (multi-página) · Three.js · GSAP (ScrollTrigger, SplitText) · Lenis · Vercel Functions · Claude API.

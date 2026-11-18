@@ -6,7 +6,7 @@ import {
   addToCart, waLink, bs, esc,
 } from '../lib/store.js';
 
-initLayout('tienda', { sub: 'producto' });
+initLayout('tienda');
 
 const id = new URLSearchParams(location.search).get('id');
 const p = byId[id] || byId['lattafa-yara'];
@@ -15,7 +15,7 @@ const prev = products[(idx - 1 + products.length) % products.length];
 const next = products[(idx + 1) % products.length];
 const lineParam = { femenino: 'femenino', masculino: 'masculino', unisex: 'unisex' }[p.gender];
 
-$('#subnavTitle').textContent = p.name;
+
 document.title = `${p.name} (inspirado en ${p.house}) — 100 ml ${PRICE_100} Bs. · Extracto Importado`;
 document.querySelector('meta[name="description"]').content = `Equivalencia de ${p.name} de ${p.house}: ${p.accords.slice(0, 4).join(', ')}. Alta concentración, +8 horas. 100 ml a ${PRICE_100} Bs. Envío gratis a toda Bolivia.`;
 $('#crumbs').insertAdjacentHTML('beforeend', `<a href="/tienda?linea=${lineParam}">${GENDER[p.gender]}</a><span>${esc(p.name)}</span>`);

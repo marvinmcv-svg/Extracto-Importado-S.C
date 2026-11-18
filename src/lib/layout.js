@@ -25,88 +25,78 @@ const ICON_SEARCH = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden
 const ICON_BAG = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M5 8h14l-1.2 12H6.2L5 8Zm4 0V6a3 3 0 0 1 6 0v2"/></svg>';
 
 const NAV = [
-  ['/tienda', 'Tienda', 'tienda'],
-  ['/tienda?linea=femenino', 'Para ella', 'ella'],
-  ['/tienda?linea=masculino', 'Para él', 'el'],
-  ['/tienda?linea=unisex', 'Unisex', 'unisex'],
-  ['/precios', 'Precios', 'precios'],
-  ['/nosotros', 'Nosotros', 'nosotros'],
-  ['/ayuda', 'Ayuda', 'ayuda'],
+  ['/tienda', 'Colección', 'tienda', 'lattafa-yara'],
+  ['/tienda?linea=femenino', 'Para ella', 'ella', 'carolina-herrera-good-girl'],
+  ['/tienda?linea=masculino', 'Para él', 'el', 'dior-sauvage'],
+  ['/tienda?linea=unisex', 'Unisex & nicho', 'unisex', 'maison-francis-kurkdjian-baccarat-rouge-540'],
+  ['/precios', 'Precios', 'precios', null],
+  ['/nosotros', 'La casa', 'nosotros', null],
+  ['/ayuda', 'Ayuda', 'ayuda', null],
 ];
 
-/* Apple-style local nav per page: [title, [[href,label]...], cta] */
-const SUB = {
-  tienda: ['Tienda', [['/tienda', 'Todo'], ['/tienda?linea=femenino', 'Ella'], ['/tienda?linea=masculino', 'Él'], ['/tienda?linea=unisex', 'Unisex']], ['/pedido', 'Hacer pedido']],
-  producto: ['Fragancia', [['#detalle', 'Descripción'], ['#similares', 'Similares']], ['#comprar', 'Comprar']],
-  precios: ['Precios', [['#perfumes', '100 ml'], ['#decants', 'Decants'], ['#calculadora', 'Calculadora'], ['#envios', 'Envíos']], ['/tienda', 'Comprar']],
-  nosotros: ['Nosotros', [['#equivalencia', 'Equivalencia'], ['#valores', 'Valores'], ['#comunidad', 'Comunidad']], ['/tienda', 'Comprar']],
-  pedido: ['Hacer pedido', [['/precios', 'Precios'], ['/ayuda', 'Ayuda']], null],
-  ayuda: ['Ayuda', [['#envios', 'Envíos'], ['#pagos', 'Pagos'], ['#mayor', 'Por mayor']], ['/pedido', 'Hacer pedido']],
-};
-
 /* ───────── chrome ───────── */
-function chrome(page, { sub = true } = {}) {
-  const ribbon = PROMO.active
-    ? `<div class="ribbon"><b>${PROMO.name}.</b> Perfumes de 100 ml a ${PRICE_100} Bs. con envío gratis a toda Bolivia. <a href="/precios">Ver precios ›</a></div>`
-    : '<div class="ribbon">Envío gratis a toda Bolivia en perfumes de 100 ml. <a href="/ayuda#envios">Más información ›</a></div>';
-  const sn = sub && SUB[typeof sub === 'string' ? sub : page];
-  const subnav = sn ? `
-  <nav class="subnav" id="subnav" aria-label="${sn[0]}">
-    <div class="subnav__inner">
-      <a class="subnav__title" id="subnavTitle" href="#main">${sn[0]}</a>
-      <div class="subnav__links">
-        ${sn[1].map(([h, l]) => `<a href="${h}">${l}</a>`).join('')}
-        ${sn[2] ? `<a class="btn btn--dark btn--sm" id="subnavCta" href="${sn[2][0]}">${sn[2][1]}</a>` : `<a class="btn btn--wa btn--sm" href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp</a>`}
-      </div>
-    </div>
-  </nav>` : '';
+function chrome(page) {
+  const items = [
+    PROMO.active ? `<b>${PROMO.name}</b> Perfumes de 100 ml a ${PRICE_100} Bs.` : `Perfumes de 100 ml a ${PRICE_100} Bs.`,
+    'Envío gratis a toda Bolivia en 100 ml',
+    'Alta concentración · más de 8 horas',
+    'Pedidos por WhatsApp · 659 071 81',
+  ].map((t) => `<span>${t}</span>`).join('');
+  const preview = (id) => (id && byId[id]?.img ? byId[id].img : '/img/still-life.jpg');
   document.body.insertAdjacentHTML('afterbegin', `
   <a class="skip" href="#main">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><em class="cursor__label"></em></span></div>
+  <div class="ticker" aria-label="Novedades"><div class="ticker__track">${items}${items.replace(/<span>/g, '<span aria-hidden="true">')}</div></div>
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+      <button class="nav__menu" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span class="nav__lines"><i></i><i></i></span><span class="nav__txt">Menú</span></button>
       <a href="/" class="wordmark" aria-label="Extracto Importado — inicio">
         <span class="wordmark__w">EXTRACTO</span><span class="wordmark__s">IMPORTADO</span>
       </a>
-      <nav class="nav__links" aria-label="Principal">
-        ${NAV.map(([h, l, k]) => `<a href="${h}" ${k === page ? 'aria-current="page"' : ''}>${l}</a>`).join('')}
-      </nav>
       <div class="nav__actions">
-        <button class="icon-btn" id="openSearch" aria-label="Buscar">${ICON_SEARCH}</button>
-        <button class="icon-btn cart-btn" id="openCart" aria-label="Ver pedido">${ICON_BAG}<span class="cart-btn__count" id="cartCount" hidden>0</span></button>
+        <button class="nav__act" id="openSearch" aria-label="Buscar">${ICON_SEARCH}<span class="nav__txt">Buscar</span></button>
+        <button class="nav__act cart-btn" id="openCart" aria-label="Ver pedido">${ICON_BAG}<span class="nav__txt">Pedido</span><span class="cart-btn__count" id="cartCount" hidden>0</span></button>
       </div>
     </div>
   </header>
-  ${page === 'home' ? '' : ribbon}
-  ${subnav}
   <div class="menu" id="menu" aria-hidden="true">
-    <nav class="menu__links">
-      <a href="/">Inicio</a>${NAV.map(([h, l]) => `<a href="${h}">${l}</a>`).join('')}<a href="/pedido">Hacer pedido</a>
-    </nav>
-    <div class="menu__foot"><a href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp 659 071 81</a><a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">Instagram @extractoimportado_sc</a></div>
+    <div class="menu__in">
+      <nav class="menu__links" aria-label="Principal">
+        ${NAV.map(([h, l, k, img], n) => `<a href="${h}" data-img="${preview(img)}" ${k === page ? 'aria-current="page"' : ''}><small>${String(n + 1).padStart(2, '0')}</small><span>${l}</span></a>`).join('')}
+      </nav>
+      <figure class="menu__fig" aria-hidden="true"><img id="menuImg" src="/img/still-life.jpg" alt="" /><figcaption>Extracto · Parfum · 100 ml</figcaption></figure>
+    </div>
+    <div class="menu__foot">
+      <a href="/pedido" class="menu__cta">Hacer un pedido <span>→</span></a>
+      <a href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp 659 071 81</a>
+      <a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">Instagram</a>
+      <span>Santa Cruz de la Sierra · Bolivia</span>
+    </div>
   </div>`);
 
   document.body.insertAdjacentHTML('beforeend', `
   <footer class="footer">
-    <div class="footer__in">
-      <div class="footer__notes">
-        <p>1. ${PROMO.active ? `Precio ${PROMO.name} por tiempo limitado (precio regular: ${LIST_100} Bs.)` : 'Precio por unidad de 100 ml'}. Las promociones de 2 y 4 perfumes permiten combinar aromas; el carrito aplica la combinación más conveniente.</p>
-        <p>2. Nuestras fragancias son versiones inspiradas (equivalencias) de alta concentración. Las marcas y fotos de frascos originales se muestran únicamente como referencia olfativa y pertenecen a sus respectivos dueños.</p>
-      </div>
-      <div class="footer__cols">
-        <div><p class="footer__h">Tienda</p><a href="/tienda">Todo el catálogo</a><a href="/tienda?linea=femenino">Para ella</a><a href="/tienda?linea=masculino">Para él</a><a href="/tienda?linea=unisex">Unisex y nicho</a></div>
-        <div><p class="footer__h">Precios</p><a href="/precios#perfumes">Perfumes de 100 ml</a><a href="/precios#decants">Decants</a><a href="/precios#calculadora">Armá tu combo</a><a href="/ayuda#mayor">Por mayor</a></div>
-        <div><p class="footer__h">Extracto</p><a href="/nosotros">Nosotros</a><a href="/nosotros#equivalencia">¿Qué es una equivalencia?</a><a href="/ayuda">Ayuda y envíos</a><a href="/pedido">Hacer pedido</a></div>
-        <div><p class="footer__h">Contacto</p><a href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp 659 071 81</a><a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">Instagram</a><button class="footer__chat" data-chat-open>Asesor virtual</button></div>
-      </div>
-      <p class="footer__more">Más formas de comprar: escribinos por <a href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp</a> o consultá al <a href="#" data-chat-open>asesor virtual</a>. Santa Cruz de la Sierra.</p>
-      <div class="footer__legal"><span>Copyright © ${new Date().getFullYear()} Extracto Importado. Todos los derechos reservados.</span><span>Bolivia</span></div>
+    <div class="footer__cta wrap">
+      <p class="footer__kicker">— Tu próxima firma</p>
+      <a class="footer__big" href="/tienda" data-cursor="Explorar"><span>Encontrá</span> <em>tu aroma.</em></a>
+    </div>
+    <div class="footer__cols wrap">
+      <div><p class="footer__h">Colección</p><a href="/tienda">Todo el catálogo</a><a href="/tienda?linea=femenino">Para ella</a><a href="/tienda?linea=masculino">Para él</a><a href="/tienda?linea=unisex">Unisex & nicho</a></div>
+      <div><p class="footer__h">Comprar</p><a href="/precios">Precios y combos</a><a href="/precios#decants">Decants</a><a href="/pedido">Hacer pedido</a><a href="/ayuda#mayor">Por mayor</a></div>
+      <div><p class="footer__h">La casa</p><a href="/nosotros">Nosotros</a><a href="/nosotros#equivalencia">¿Qué es una equivalencia?</a><a href="/ayuda">Envíos y ayuda</a><button class="footer__chat" data-chat-open>Asesor virtual</button></div>
+      <div><p class="footer__h">Contacto</p><a href="${waLink('Hola Extracto Importado 👋')}" target="_blank" rel="noopener">WhatsApp 659 071 81</a><a href="https://www.instagram.com/extractoimportado_sc/" target="_blank" rel="noopener">@extractoimportado_sc</a><span>Santa Cruz de la Sierra</span></div>
+    </div>
+    <div class="footer__mark" aria-hidden="true"><span>EXTRACTO</span></div>
+    <div class="footer__legal wrap">
+      <span>© ${new Date().getFullYear()} Extracto Importado</span>
+      <span>Nuestras fragancias son versiones inspiradas (equivalencias) de alta concentración. Las marcas y fotos de frascos originales se muestran solo como referencia olfativa y pertenecen a sus dueños.${PROMO.active ? ` Precio ${PROMO.name} por tiempo limitado (regular: ${LIST_100} Bs.).` : ''}</span>
     </div>
   </footer>
   <div class="drawer" id="cart" aria-hidden="true">
     <div class="drawer__backdrop" data-close></div>
     <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
-      <div class="drawer__head"><p id="cartTitle">Tu pedido</p><button class="close-btn" data-close aria-label="Cerrar">✕</button></div>
+      <div class="drawer__head"><p id="cartTitle">Tu <em>pedido</em></p><button class="close-btn" data-close aria-label="Cerrar">✕</button></div>
       <div class="drawer__body" id="cartBody" data-lenis-prevent></div>
       <div class="drawer__foot" id="cartFoot"></div>
     </aside>
@@ -114,18 +104,18 @@ function chrome(page, { sub = true } = {}) {
   <div class="sheet" id="searchSheet" aria-hidden="true">
     <div class="sheet__backdrop" data-close></div>
     <div class="sheet__panel" role="dialog" aria-modal="true" aria-label="Buscar">
-      <div class="wrap wrap--narrow">
-        <label class="field-search field-search--lg">${ICON_SEARCH}<span class="sr-only">Buscar</span>
-          <input id="sheetInput" type="search" placeholder="Buscar en Extracto" autocomplete="off" />
-          <button class="close-btn" data-close aria-label="Cerrar">✕</button>
+      <div class="wrap">
+        <div class="sheet__top"><p class="eyebrow">Buscar en 156 fragancias</p><button class="close-btn" data-close aria-label="Cerrar">✕</button></div>
+        <label class="field-search field-search--lg"><span class="sr-only">Buscar</span>
+          <input id="sheetInput" type="search" placeholder="Sauvage, Yara, Baccarat…" autocomplete="off" />
         </label>
         <div class="results" id="sheetResults" data-lenis-prevent></div>
-        <div class="quick" id="sheetQuick"><p>Enlaces rápidos</p><a href="/tienda?linea=femenino">Perfumes para ella</a><a href="/tienda?linea=masculino">Perfumes para él</a><a href="/precios">Precios y decants</a><a href="/pedido">Hacer un pedido</a></div>
+        <div class="quick" id="sheetQuick"><p>Lo más buscado</p><a href="/producto?id=lattafa-yara">Yara</a><a href="/producto?id=dior-sauvage">Sauvage</a><a href="/producto?id=maison-francis-kurkdjian-baccarat-rouge-540">Baccarat Rouge 540</a><a href="/producto?id=carolina-herrera-good-girl">Good Girl</a><a href="/producto?id=paco-rabanne-1-million">1 Million</a></div>
       </div>
     </div>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="curtain" id="curtain" aria-hidden="true"></div>`);
+  <div class="curtain" id="curtain" aria-hidden="true"><span class="curtain__mark">EXTRACTO</span></div>`);
 }
 
 /* ───────── layers ───────── */
@@ -167,12 +157,12 @@ export function media(p, cls = '') {
 }
 export const priceHtml = () => `${PROMO.active ? `<s>${LIST_100}</s>` : ''}<strong>${bs(PRICE_100)}</strong>`;
 
-export function card(p) {
+export function card(p, n) {
   const badge = p.soon ? '<span class="tag">Próximamente</span>' : p.isNew ? '<span class="tag tag--new">Nuevo</span>' : PROMO.active ? `<span class="tag tag--promo">${PROMO.name}</span>` : '';
   return `<article class="pcard" data-tilt>
-    <a class="pcard__media" href="${productUrl(p.id)}" aria-label="${esc(p.name)}, inspirado en ${esc(p.house)}">${media(p)}${badge}<span class="pcard__glare" aria-hidden="true"></span></a>
+    <a class="pcard__media" href="${productUrl(p.id)}" data-cursor="Ver" aria-label="${esc(p.name)}, inspirado en ${esc(p.house)}">${media(p)}${badge}<span class="pcard__glare" aria-hidden="true"></span></a>
     <div class="pcard__body">
-      <p class="pcard__house">${esc(p.house)}</p>
+      <p class="pcard__house"><span>N° ${String(p.n || n || 0).padStart(3, '0')}</span>${esc(p.house)}</p>
       <h3 class="pcard__name"><a href="${productUrl(p.id)}">${esc(p.name)}</a></h3>
       <p class="pcard__acc">${p.accords.slice(0, 3).map((a) => esc(a)).join(' · ')}</p>
       <div class="pcard__foot">
@@ -255,7 +245,7 @@ export function reveals(root = document) {
   // generic fade-up
   ScrollTrigger.batch($$('[data-reveal]:not([data-reveal-on])', root).map((el) => { el.dataset.revealOn = '1'; return el; }), {
     start: 'top 92%', once: true,
-    onEnter: (els) => gsap.fromTo(els, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: 'power3.out', stagger: 0.09, overwrite: true }),
+    onEnter: (els) => gsap.fromTo(els, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.4, ease: 'expo.out', stagger: 0.1, overwrite: true }),
   });
   // image clip reveal
   $$('[data-clip]:not([data-clip-on])', root).forEach((el) => {
@@ -321,7 +311,7 @@ function renderCart() {
   const t = totals();
   $('#cartBody').innerHTML = cart.length
     ? `${nudge(t) ? `<p class="nudge">${nudge(t)}</p>` : ''}${cart.map(lineRow).join('')}`
-    : '<div class="empty-cart"><p>Tu pedido está vacío. Elegí tus fragancias en la tienda o dejá que el asesor te recomiende.</p><div class="ctas"><a class="btn btn--dark" href="/tienda">Ver la tienda</a><button class="link" data-chat-open>Preguntarle al asesor</button></div></div>';
+    : '<div class="empty-cart"><p class="empty-cart__big">Todavía <em>vacío.</em></p><p>Elegí tus fragancias en la colección o dejá que el asesor te recomiende.</p><div class="ctas"><a class="btn btn--dark" href="/tienda">Ver la colección</a><button class="link" data-chat-open>Preguntarle al asesor</button></div></div>';
   $('#cartFoot').innerHTML = cart.length
     ? `${totalsHtml(t)}<a class="btn btn--dark btn--block" href="/pedido#datos">Continuar pedido</a><p class="fine">Lo terminás por WhatsApp. Sin pagos en la web.</p>`
     : '';
@@ -364,11 +354,15 @@ export function wireSearch(input, box, { limit = 6, onEnter, keepOpen } = {}) {
 /* ───────── page transitions ───────── */
 function transitions() {
   const curtain = $('#curtain');
+  const mark = $('.curtain__mark');
   const arrived = sessionStorage.getItem('ei-transit') === '1';
   sessionStorage.removeItem('ei-transit');
   if (arrived && !reduced) {
-    gsap.set(curtain, { autoAlpha: 1 });
-    gsap.to(curtain, { autoAlpha: 0, duration: 0.6, ease: 'power2.out', delay: 0.05 });
+    gsap.set(curtain, { autoAlpha: 1, clipPath: 'inset(0% 0% 0% 0%)' });
+    gsap.timeline()
+      .to(mark, { opacity: 0, y: -20, duration: 0.35, ease: 'power2.in' })
+      .to(curtain, { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.9, ease: 'expo.inOut' }, '-=0.1')
+      .set(curtain, { autoAlpha: 0 });
   } else gsap.set(curtain, { autoAlpha: 0 });
 
   document.addEventListener('click', (e) => {
@@ -382,20 +376,46 @@ function transitions() {
         e.preventDefault();
         const t = url.hash === '#main' ? null : $(url.hash);
         if (url.hash === '#main') lenis ? lenis.scrollTo(0, { duration: 1.2 }) : scrollTo({ top: 0, behavior: 'smooth' });
-        else if (t) lenis ? lenis.scrollTo(t, { offset: -64, duration: 1.4 }) : t.scrollIntoView({ behavior: 'smooth' });
+        else if (t) lenis ? lenis.scrollTo(t, { offset: -90, duration: 1.4 }) : t.scrollIntoView({ behavior: 'smooth' });
         $$('.is-open').forEach(closeLayer);
+        setMenu(false);
       }
       return;
     }
     if (reduced) return;
     e.preventDefault();
-    $$('.is-open').forEach(closeLayer);
     sessionStorage.setItem('ei-transit', '1');
-    gsap.to(curtain, { autoAlpha: 1, duration: 0.35, ease: 'power2.in', onComplete: () => { location.href = url.href; } });
+    gsap.timeline({ onComplete: () => { location.href = url.href; } })
+      .set(curtain, { autoAlpha: 1, clipPath: 'inset(100% 0% 0% 0%)' })
+      .set(mark, { opacity: 0, y: 20 })
+      .to(curtain, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'expo.inOut' })
+      .to(mark, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, '-=0.25');
   });
-  // bfcache: make sure curtain is gone when navigating back
   addEventListener('pageshow', (e) => { if (e.persisted) gsap.set(curtain, { autoAlpha: 0 }); });
 }
+
+/* ───────── custom cursor ───────── */
+function cursor() {
+  if (!finePointer || reduced) return;
+  const el = $('.cursor'), ring = $('.cursor__ring'), lab = $('.cursor__label');
+  document.documentElement.classList.add('has-cursor');
+  const dx = gsap.quickTo('.cursor__dot', 'x', { duration: 0.1 }), dy = gsap.quickTo('.cursor__dot', 'y', { duration: 0.1 });
+  const rx = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3' }), ry = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3' });
+  addEventListener('pointermove', (e) => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); el.classList.add('is-on'); }, { passive: true });
+  document.addEventListener('pointerleave', () => el.classList.remove('is-on'));
+  document.addEventListener('pointerover', (e) => {
+    const t = e.target.closest('[data-cursor], a, button, input, select, textarea, label, summary, canvas');
+    el.classList.toggle('is-hover', !!t);
+    const txt = t?.dataset?.cursor || '';
+    el.classList.toggle('has-label', !!txt);
+    lab.textContent = txt;
+  });
+  addEventListener('pointerdown', () => el.classList.add('is-down'));
+  addEventListener('pointerup', () => el.classList.remove('is-down'));
+}
+
+/* ───────── menu ───────── */
+let setMenu = () => {};
 
 /* ───────── smooth scroll ───────── */
 function smooth() {
@@ -408,45 +428,51 @@ function smooth() {
 }
 
 /* ───────── init ───────── */
-export function initLayout(page, { darkHero = false, sub = true } = {}) {
-  chrome(page, { sub });
-  if (darkHero) document.body.classList.add('has-dark-hero', 'nav-dark');
+export function initLayout(page, { overHero = false } = {}) {
+  chrome(page);
+  if (overHero) document.body.classList.add('over-hero');
 
-  // sub-nav gets a hairline once it sticks
-  const subnav = $('#subnav');
-  if (subnav) {
-    const sentinel = document.createElement('div');
-    subnav.before(sentinel);
-    new IntersectionObserver(([e]) => subnav.classList.toggle('is-stuck', !e.isIntersecting)).observe(sentinel);
-  }
-  // dark chrome while a [data-nav-dark] section sits under the nav
-  if (darkHero) {
-    const check = () => {
-      const over = $$('[data-nav-dark]').some((el) => { const r = el.getBoundingClientRect(); return r.top <= 24 && r.bottom >= 24; });
-      document.body.classList.toggle('nav-dark', over);
-    };
-    addEventListener('scroll', check, { passive: true });
-    addEventListener('resize', check);
-    check();
-  }
+  // header: transparent at top, glass once scrolled, hides on the way down
+  const nav = $('#nav');
+  let last = 0;
+  const onScroll = () => {
+    const y = scrollY;
+    nav.classList.toggle('is-scrolled', y > 30);
+    nav.classList.toggle('is-hidden', y > 500 && y > last + 2 && !$('.is-open'));
+    if (y < last - 2) nav.classList.remove('is-hidden');
+    last = y;
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  // mobile menu
-  const menu = $('#menu'), burger = $('#burger');
-  burger.addEventListener('click', () => {
-    const open = !menu.classList.contains('is-open');
+  // fullscreen menu with hover previews
+  const menu = $('#menu'), burger = $('#burger'), img = $('#menuImg');
+  setMenu = (open) => {
+    if (open === menu.classList.contains('is-open')) return;
     burger.setAttribute('aria-expanded', open);
     burger.classList.toggle('is-x', open);
+    $('.nav__menu .nav__txt').textContent = open ? 'Cerrar' : 'Menú';
     if (open) {
       openLayer(menu);
-      if (!reduced) gsap.fromTo($$('.menu__links a, .menu__foot a', menu), { y: -8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out', stagger: 0.025, delay: 0.08 });
+      if (!reduced) {
+        gsap.fromTo($$('.menu__links a span', menu), { yPercent: 110 }, { yPercent: 0, duration: 1, ease: 'expo.out', stagger: 0.05, delay: 0.25 });
+        gsap.fromTo('.menu__fig', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'expo.inOut', delay: 0.2 });
+      }
     } else closeLayer(menu);
-  });
+  };
+  burger.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+  $$('.menu__links a', menu).forEach((a) => a.addEventListener('pointerenter', () => {
+    if (img.getAttribute('src') === a.dataset.img) return;
+    img.src = a.dataset.img;
+    if (!reduced) gsap.fromTo(img, { scale: 1.15, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.9, ease: 'expo.out' });
+  }));
 
   // layers
   $$('.drawer, .sheet').forEach((el) => el.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) closeLayer(el); }));
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    $$('.is-open').forEach((el) => { closeLayer(el); if (el === menu) { burger.classList.remove('is-x'); burger.setAttribute('aria-expanded', 'false'); } });
+    if (menu.classList.contains('is-open')) setMenu(false);
+    $$('.is-open').forEach(closeLayer);
   });
   $('#openCart').addEventListener('click', () => openLayer($('#cart')));
   $('#openSearch').addEventListener('click', () => { openLayer($('#searchSheet')); setTimeout(() => $('#sheetInput').focus(), 60); });
@@ -474,6 +500,7 @@ export function initLayout(page, { darkHero = false, sub = true } = {}) {
   renderCart();
   smooth();
   transitions();
+  cursor();
   mountChat();
   // wait for fonts so split lines measure correctly
   (document.fonts?.ready || Promise.resolve()).then(() => { reveals(); tilt(); magnetic(); ScrollTrigger.refresh(); });

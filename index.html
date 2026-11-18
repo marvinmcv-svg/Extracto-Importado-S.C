@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Extracto Importado — Perfumes de alta concentración · Santa Cruz, Bolivia</title>
   <meta name="description" content="Expertos en equivalencias de perfumes. 156 fragancias de alta concentración, +8 horas de duración. Black Friday: 100 ml a 350 Bs. Envío gratis a toda Bolivia." />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#0b0907" />
   <meta property="og:title" content="Extracto Importado — Tu aroma habla de vos" />
   <meta property="og:description" content="Black Friday: perfumes de 100 ml a 350 Bs. 156 fragancias de alta concentración. Envío gratis a toda Bolivia." />
   <meta property="og:type" content="website" />
@@ -13,251 +13,171 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Store","name":"Extracto Importado","description":"Expertos en equivalencias de perfumes. Distribuidor autorizado. Precios por mayor y menor.","telephone":"+591 65907181","image":"/img/still-life.jpg","address":{"@type":"PostalAddress","addressLocality":"Santa Cruz de la Sierra","addressCountry":"BO"},"sameAs":["https://www.instagram.com/extractoimportado_sc/"],"priceRange":"Bs. 50 – Bs. 1260"}
   </script>
 </head>
 <body data-page="home">
+  <div class="preload" id="preload" aria-hidden="true">
+    <div class="preload__mark"><span class="preload__w">EXTRACTO</span><span class="preload__s">Importado · Parfum</span></div>
+    <span class="preload__n" id="preN">000</span>
+    <div class="preload__bar"><i></i></div>
+  </div>
+
   <main id="main">
-    <!-- 1 · scroll story: glossy WebGL bottle -->
-    <section class="story3d" id="story" data-nav-dark aria-label="Presentación">
-      <div class="story3d__stage">
-        <div class="story3d__glow" aria-hidden="true"></div>
-        <canvas class="story3d__gl" id="bottle" aria-hidden="true"></canvas>
-        <img class="story3d__fallback" id="bottleFallback" src="/img/still-life.jpg" alt="Frascos Extracto Importado Parfum de 100 ml" width="566" height="731" hidden />
-        <div class="story3d__line" aria-hidden="true"></div>
+    <!-- hero: liquid gold + glass -->
+    <section class="hero" id="hero" aria-label="Presentación">
+      <canvas class="hero__gl" id="bottle" aria-hidden="true"></canvas>
+      <img class="hero__fallback" id="bottleFallback" src="/img/still-life.jpg" alt="" hidden />
+      <p class="hero__meta hero__meta--l" data-hero-in>N° 001 — Extracto · Parfum · 100 ml</p>
+      <p class="hero__meta hero__meta--r" data-hero-in>17°47′ S · 63°10′ O<br />Santa Cruz de la Sierra</p>
+      <div class="hero__copy wrap">
+        <p class="hero__kicker" data-hero-in><b>Black Friday</b><span>Perfumes de 100 ml a 350 Bs. <s>410</s></span></p>
+        <h1 class="hero__title" id="heroTitle"><span class="sr-only">Extracto Importado: </span><span class="hl">Tu aroma</span><span class="hl hl--in"><em>habla</em> de vos.</span></h1>
+        <div class="hero__row">
+          <p class="hero__lead" data-hero-in><strong>156 equivalencias</strong> de alta concentración, inspiradas en las casas más deseadas del mundo. Más de ocho horas en tu piel.</p>
+          <div class="ctas" data-hero-in><a class="btn btn--dark" href="/tienda" data-magnetic>Descubrir la colección <span class="arr">→</span></a><a class="link" href="/precios">Ver precios</a></div>
+        </div>
+      </div>
+      <a class="hero__badge" href="#manifiesto" aria-label="Seguir bajando" data-cursor="Bajar">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs><text><textPath href="#circ">EXTRACTO · PARFUM · ALTA CONCENTRACIÓN · MÁS DE 8 HORAS · </textPath></text></svg>
+        <span>↓</span>
+      </a>
+    </section>
 
-        <div class="story3d__intro" id="heroIntro">
-          <p class="story3d__eyebrow" data-hero-in><span class="grad">Black Friday</span></p>
-          <h1 class="story3d__title" id="heroTitle">Extracto Importado.</h1>
-          <p class="story3d__sub" data-hero-in>Tu aroma habla de vos.</p>
-          <p class="story3d__price" data-hero-in>Perfumes de 100 ml a 350 Bs. <s>410 Bs.</s></p>
-          <div class="ctas center" data-hero-in>
-            <a class="btn btn--dark" href="/tienda" data-magnetic>Ver la tienda</a>
-            <a class="btn btn--ghost-light" href="/precios">Ver precios</a>
-          </div>
-        </div>
+    <!-- houses -->
+    <section class="houses" aria-label="Casas de referencia"><div class="houses__track" id="houses"></div></section>
 
-        <div class="callout callout--l" data-callout>
-          <p class="callout__k">El frasco</p>
-          <p class="callout__h">Vidrio grueso.<br />Brillo de cristal.</p>
-          <p class="callout__t">Nuestro flacon cuadrado de 100 ml, pesado y transparente, con collar dorado y etiqueta crema. Hecho para quedarse en tu tocador.</p>
-        </div>
-        <div class="callout callout--r" data-callout>
-          <p class="callout__k">Extracto · Parfum</p>
-          <p class="callout__big"><span class="grad">+8 h</span></p>
-          <p class="callout__t">Alta concentración que dura todo el día en la piel, y aún más en la ropa.</p>
-        </div>
-        <div class="callout callout--l" data-callout>
-          <p class="callout__k">La colección</p>
-          <p class="callout__big"><span class="grad">156</span></p>
-          <p class="callout__t">fragancias inspiradas en las casas más deseadas del mundo: Dior, Chanel, Tom Ford, Creed, Lattafa y muchas más.</p>
-        </div>
-        <div class="callout callout--c" data-callout>
-          <p class="callout__k">Tu firma</p>
-          <h2 class="callout__h callout__h--xl">Elegí la tuya.</h2>
-          <div class="ctas center"><a class="btn btn--dark" href="/tienda">Comprar</a><a class="link link--dark" href="/nosotros#equivalencia">¿Qué es una equivalencia?</a></div>
-        </div>
-        <p class="story3d__hint" id="scrollHint" aria-hidden="true"><span></span>Deslizá</p>
+    <!-- manifesto -->
+    <section class="manifesto wrap" id="manifiesto">
+      <p class="label">Manifiesto</p>
+      <p class="manifesto__text" data-scrub-words>Un perfume no es un lujo, <span class="pill"><img src="/img/still-life.jpg" alt="" loading="lazy" /></span> es una firma. Traemos las fragancias más deseadas del mundo <span class="pill pill--b"><img src="/img/p/lattafa-yara.webp" alt="" loading="lazy" /></span> en versiones de alta concentración: intensas, duraderas <span class="pill pill--c"><img src="/img/collage.jpg" alt="" loading="lazy" /></span> y a un precio que se siente tan bien como su aroma.</p>
+      <div class="stats">
+        <div class="stat" data-reveal><strong><span data-count="156">156</span></strong><span>fragancias en el catálogo</span></div>
+        <div class="stat" data-reveal><strong><span data-count="8">8</span><em>h+</em></strong><span>de duración en la piel</span></div>
+        <div class="stat" data-reveal><strong><span data-count="100">100</span><em>ml</em></strong><span>frasco de vidrio grueso</span></div>
+        <div class="stat" data-reveal><strong><span data-count="9">9</span></strong><span>departamentos con envío</span></div>
       </div>
     </section>
 
-    <!-- 2 · houses marquee -->
-    <section class="houses" aria-label="Casas de referencia">
-      <div class="houses__track" id="houses"></div>
-    </section>
-
-    <!-- 3 · statement -->
-    <section class="sec wrap wrap--narrow">
-      <p class="statement" data-scrub-words>Un perfume no es un lujo, es una firma. Traemos las fragancias más deseadas del mundo en versiones de alta concentración: intensas, duraderas y a un precio que se siente tan bien como su aroma.</p>
-    </section>
-
-    <!-- 4 · bento highlights -->
-    <section class="bento-sec" aria-labelledby="hlTitle">
-      <div class="wrap"><h2 class="h2 sec-title" id="hlTitle" data-split>Lo esencial.</h2></div>
-      <div class="wrap bento">
-        <article class="tile tile--dark tile--a" data-tilt="3" data-tile>
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <p class="tile__k">Catálogo</p>
-          <p class="tile__num"><span class="grad" data-count="156">156</span></p>
-          <p class="tile__t">fragancias inspiradas en las casas más deseadas del mundo.</p>
-          <div class="tile__strip" id="tileStrip" aria-hidden="true"></div>
-        </article>
-        <article class="tile tile--photo tile--b" data-tilt="3" data-tile>
-          <img src="/img/still-life.jpg" alt="Frascos Extracto Importado sobre corteza con lavanda" loading="lazy" width="566" height="731" />
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <div class="tile__over"><p class="tile__k">El frasco</p><p class="tile__h">Vidrio grueso.<br />Tapa negra mate.</p></div>
-        </article>
-        <article class="tile tile--c" data-tilt="4" data-tile>
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <p class="tile__k">Duración</p>
-          <p class="tile__num"><span data-count="8">8</span><small>h+</small></p>
-          <p class="tile__t">en la piel. Concentración Extracto · Parfum.</p>
-        </article>
-        <article class="tile tile--d" data-tilt="4" data-tile>
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <p class="tile__k">Envío</p>
-          <p class="tile__num tile__num--word">Gratis</p>
-          <p class="tile__t">a los <span data-count="9">9</span> departamentos en perfumes de 100 ml.</p>
-        </article>
-        <article class="tile tile--gold tile--e" data-tilt="4" data-tile>
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <p class="tile__k">Black Friday</p>
-          <p class="tile__num"><span data-count="350">350</span><small>Bs.</small></p>
-          <p class="tile__t">cada perfume de 100 ml. Antes 410 Bs.</p>
-        </article>
-        <a class="tile tile--f" href="/ayuda#mayor" data-tilt="4" data-tile>
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <p class="tile__k">Ventas</p>
-          <p class="tile__h">Por mayor<br />y menor.</p>
-          <span class="link">Precios para revendedores</span>
+    <!-- three paths -->
+    <section class="paths" id="coleccion">
+      <div class="wrap sec-head">
+        <div><p class="label">Tres caminos</p><h2 class="h2" data-split>Elegí tu <i>camino.</i></h2></div>
+        <a class="link" href="/tienda">Toda la colección</a>
+      </div>
+      <div class="wrap paths__grid">
+        <a class="path" href="/tienda?linea=femenino" data-cursor="Explorar">
+          <figure class="path__arch" data-speed="-6"><img src="/img/p/carolina-herrera-good-girl.webp" alt="" loading="lazy" style="--pos: 48%" /></figure>
+          <div class="path__copy"><small>01</small><h3>Para <em>ella</em></h3><p id="countF"></p></div>
+        </a>
+        <a class="path path--mid" href="/tienda?linea=masculino" data-cursor="Explorar">
+          <figure class="path__arch" data-speed="6"><img src="/img/p/dior-sauvage.webp" alt="" loading="lazy" style="--pos: 50%" /></figure>
+          <div class="path__copy"><small>02</small><h3>Para <em>él</em></h3><p id="countM"></p></div>
+        </a>
+        <a class="path" href="/tienda?linea=unisex" data-cursor="Explorar">
+          <figure class="path__arch" data-speed="-3"><img src="/img/p/maison-francis-kurkdjian-baccarat-rouge-540.webp" alt="" loading="lazy" style="--pos: 52%" /></figure>
+          <div class="path__copy"><small>03</small><h3>Unisex <em>& nicho</em></h3><p id="countU"></p></div>
         </a>
       </div>
     </section>
 
-    <!-- 5 · lines -->
-    <section class="sec lines-sec" id="coleccion" aria-labelledby="linesTitle">
-      <div class="wrap"><h2 class="h2 sec-title" id="linesTitle" data-split>Elegí tu camino. <em>Tres líneas, una firma.</em></h2></div>
-      <div class="wrap lines-grid">
-        <a class="lcard" href="/tienda?linea=femenino" data-tilt="4">
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <div class="lcard__copy"><p class="eyebrow">Más pedido: Yara</p><h3>Para ella</h3><p class="lcard__sub" id="countF"></p><p class="lcard__price">Desde 350 Bs.</p>
-            <span class="lcard__ctas"><span class="btn btn--dark btn--sm">Comprar</span><span class="link">Ver más</span></span></div>
-          <div class="lcard__img"><img src="/img/p/carolina-herrera-good-girl.webp" alt="" loading="lazy" width="760" height="440" /></div>
-        </a>
-        <a class="lcard" href="/tienda?linea=masculino" data-tilt="4">
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <div class="lcard__copy"><p class="eyebrow">Más pedido: Sauvage</p><h3>Para él</h3><p class="lcard__sub" id="countM"></p><p class="lcard__price">Desde 350 Bs.</p>
-            <span class="lcard__ctas"><span class="btn btn--dark btn--sm">Comprar</span><span class="link">Ver más</span></span></div>
-          <div class="lcard__img"><img src="/img/p/dior-sauvage.webp" alt="" loading="lazy" width="760" height="440" /></div>
-        </a>
-        <a class="lcard" href="/tienda?linea=unisex" data-tilt="4">
-          <span class="pcard__glare" aria-hidden="true"></span>
-          <div class="lcard__copy"><p class="eyebrow">Nicho</p><h3>Unisex</h3><p class="lcard__sub" id="countU"></p><p class="lcard__price">Desde 350 Bs.</p>
-            <span class="lcard__ctas"><span class="btn btn--dark btn--sm">Comprar</span><span class="link">Ver más</span></span></div>
-          <div class="lcard__img"><img src="/img/p/maison-francis-kurkdjian-baccarat-rouge-540.webp" alt="" loading="lazy" width="760" height="440" /></div>
-        </a>
+    <!-- olfactory families -->
+    <section class="families" id="familias">
+      <div class="wrap sec-head">
+        <div><p class="label">Familias olfativas</p><h2 class="h2" data-split>¿A qué <i>querés</i> oler?</h2></div>
+        <p class="lead">Elegí una familia y te mostramos las fragancias donde domina.</p>
       </div>
+      <ul class="fam wrap" id="famList"></ul>
+      <div class="fam-preview" id="famPreview" aria-hidden="true"><img alt="" /></div>
     </section>
 
-    <!-- 6 · bestsellers rail -->
+    <!-- bestsellers -->
     <section class="rail" id="mas-pedidos">
       <div class="rail__pin" id="railPin">
         <div class="rail__head wrap">
-          <h2 class="h2" data-split>Lo más pedido. <em>Los que dejan huella.</em></h2>
-          <a class="link" href="/tienda">Ver todos</a>
+          <div><p class="label">Lo más pedido</p><h2 class="h2" data-split>Los que <i>dejan huella.</i></h2></div>
+          <div class="rail__meta"><span class="rail__count"><b id="railN">01</b> / 12</span><div class="rail__progress"><i id="railBar"></i></div></div>
         </div>
         <div class="rail__track" id="railTrack"></div>
-        <div class="rail__progress"><i id="railBar"></i></div>
       </div>
     </section>
 
-    <!-- 7 · image zoom -->
-    <section class="zoom" id="zoom" aria-labelledby="zoomTitle">
-      <div class="zoom__stage" id="zoomStage">
-        <figure class="zoom__fig" id="zoomFig"><img src="/img/still-life.jpg" alt="Dos frascos Extracto Importado Parfum de 100 ml sobre corteza, con lavanda y flores blancas" loading="lazy" width="566" height="731" /></figure>
-        <div class="zoom__copy" id="zoomCopy">
-          <p class="label label--grad">Hecho para durar</p>
-          <h2 class="h2" id="zoomTitle">Vidrio grueso.<br />Esencia pura.</h2>
-        </div>
+    <!-- the bottle -->
+    <section class="story wrap">
+      <figure class="story__arch" data-clip><img src="/img/still-life.jpg" alt="Dos frascos Extracto Importado Parfum de 100 ml sobre corteza, con lavanda y flores blancas" loading="lazy" width="566" height="731" /></figure>
+      <div class="story__copy">
+        <p class="label">El frasco</p>
+        <h2 class="h2" data-split>Vidrio grueso.<br /><i>Esencia pura.</i></h2>
+        <p class="lead" data-reveal>Cada Extracto llega en nuestro frasco cuadrado de 100 ml, con tapa negra mate, collar dorado y etiqueta crema. Sobrio, pesado y hecho para quedarse en tu tocador.</p>
+        <dl class="specs" data-reveal>
+          <div><dt>Concentración</dt><dd>Extracto · Parfum</dd></div>
+          <div><dt>Duración</dt><dd>Más de 8 horas</dd></div>
+          <div><dt>Formatos</dt><dd>100 · 30 · 10 · 5 ml</dd></div>
+          <div><dt>Ventas</dt><dd>Por mayor y menor</dd></div>
+        </dl>
+        <p data-reveal><a class="link" href="/nosotros">Conocé la casa</a></p>
       </div>
-      <div class="wrap specs-bar">
-        <div data-reveal><span>Concentración</span><strong>Extracto · Parfum</strong></div>
-        <div data-reveal><span>Duración</span><strong>+8 horas</strong></div>
-        <div data-reveal><span>Formatos</span><strong>100 · 30 · 10 · 5 ml</strong></div>
-        <div data-reveal><span>Ventas</span><strong>Por mayor y menor</strong></div>
-      </div>
-      <p class="center" style="margin-top: 36px" data-reveal><a class="link" href="/nosotros">Conocé Extracto</a></p>
     </section>
 
-    <!-- 8 · 360 ring -->
-    <section class="ring-sec" id="r360" data-nav-dark aria-labelledby="ringTitle">
-      <div class="wrap center ring-sec__head">
-        <p class="label label--grad">La colección</p>
-        <h2 class="h2" id="ringTitle" data-split>En 360°.</h2>
-        <p class="lead center" data-reveal>Arrastrá para girar. Tocá la del frente para verla.</p>
+    <!-- 360 ring -->
+    <section class="ring-sec" id="r360">
+      <div class="wrap ring-sec__head">
+        <p class="label">En órbita</p>
+        <h2 class="h2" data-split>La colección, <i>en 360°.</i></h2>
       </div>
-      <div class="ring">
+      <div class="ring" data-cursor="Arrastrá">
         <canvas class="ring__gl" id="gl" aria-label="Carrusel 3D de fragancias: arrastrá para girar, tocá la del frente para verla"></canvas>
         <div class="ring__fallback" id="heroFallback"></div>
       </div>
       <div class="ring__now">
-        <button class="ring__arrow" id="heroPrev" aria-label="Anterior">‹</button>
-        <div class="ring__info" id="ringInfo"><span class="ring__idx" id="heroIdx">01 / 12</span><p class="ring__name" id="heroName">&nbsp;</p><p class="ring__house" id="heroHouse">&nbsp;</p></div>
-        <button class="ring__arrow" id="heroNext" aria-label="Siguiente">›</button>
+        <button class="ring__arrow" id="heroPrev" aria-label="Anterior">←</button>
+        <div class="ring__info" id="ringInfo" data-cursor="Ver"><span class="ring__idx" id="heroIdx">01 / 12</span><p class="ring__name" id="heroName">&nbsp;</p><p class="ring__house" id="heroHouse">&nbsp;</p></div>
+        <button class="ring__arrow" id="heroNext" aria-label="Siguiente">→</button>
       </div>
     </section>
 
-    <!-- 9 · Black Friday -->
-    <section class="promo" data-nav-dark aria-labelledby="promoTitle">
-      <div class="promo__glow" aria-hidden="true"></div>
-      <div class="wrap center">
-        <p class="label label--grad center" id="promoTitle">Black Friday · por tiempo limitado</p>
-        <p class="promo__big"><span class="grad" data-count="350">350</span><small>Bs.</small></p>
-        <p class="promo__was">Cada perfume de 100 ml. Antes <s>410 Bs.</s> Combiná los aromas que quieras.</p>
-        <ul class="tiers-mini">
-          <li data-reveal><span>1 perfume</span><strong>350 Bs.</strong><em>100 ml</em></li>
-          <li data-reveal><span>2 perfumes</span><strong>690 Bs.</strong><em>345 Bs. c/u</em></li>
-          <li data-reveal><span>4 perfumes</span><strong>1.260 Bs.</strong><em>315 Bs. c/u</em></li>
-          <li data-reveal><span>Decants</span><strong>50 Bs.</strong><em>desde 5 ml</em></li>
-        </ul>
-        <div class="ctas center"><a class="btn btn--dark" href="/precios" data-magnetic>Ver precios y combos</a><a class="link link--dark" href="/precios#calculadora">Armá tu combo</a></div>
-      </div>
-    </section>
-
-    <!-- 10 · why buy -->
-    <section class="sec features-sec" aria-labelledby="whyTitle">
-      <div class="wrap"><h2 class="h2 sec-title" id="whyTitle" data-split>Por qué comprar en Extracto.</h2></div>
-      <div class="wrap features">
-        <div class="feature" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 14h22v18H6zM28 20h8l6 6v6H28z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="13" cy="34" r="4" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="34" r="4" fill="#fff" stroke="currentColor" stroke-width="2"/></svg>
-          <h3>Envío gratis</h3><p>A los 9 departamentos en perfumes de 100 ml.</p><a class="link" href="/ayuda#envios">Más información</a>
-        </div>
-        <div class="feature" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15h7v7h-7zM26 15h7v7h-7zM15 26h7v7h-7zM27 27h2v2h-2zM31 31h2v2h-2zM27 31h2v2h-2zM31 27h2v2h-2z" fill="currentColor"/></svg>
-          <h3>Pagás al confirmar</h3><p>QR, transferencia o efectivo, después de confirmar por WhatsApp.</p><a class="link" href="/ayuda#pagos">Formas de pago</a>
-        </div>
-        <div class="feature" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6C17 15 13 21 13 27a11 11 0 0 0 22 0c0-6-4-12-11-21Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M19 29a5 5 0 0 0 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <h3>Alta concentración</h3><p>Extracto · Parfum con más de 8 horas de duración.</p><a class="link" href="/nosotros#equivalencia">Cómo lo hacemos</a>
-        </div>
-        <div class="feature" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 6v-6h-4a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="17" cy="23" r="2" fill="currentColor"/><circle cx="24" cy="23" r="2" fill="currentColor"/><circle cx="31" cy="23" r="2" fill="currentColor"/></svg>
-          <h3>Atención personal</h3><p>Asesor virtual 24/7 y atención por WhatsApp.</p><button class="link" data-chat-open>Hablar con el asesor</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11 · advisor (Apple Intelligence glow) -->
-    <section class="sec advisor-sec" aria-labelledby="advTitle">
-      <div class="wrap advisor">
+    <!-- Black Friday -->
+    <section class="promo" id="promo">
+      <div class="promo__marquee" aria-hidden="true"><div class="promo__track" id="promoTrack"><span>350 Bs.</span><em>Black Friday</em><span>350 Bs.</span><em>Black Friday</em><span>350 Bs.</span><em>Black Friday</em></div></div>
+      <div class="wrap promo__grid">
         <div>
-          <p class="label label--grad">Asesor virtual</p>
-          <h2 class="h2" id="advTitle" data-split>¿No sabés cuál elegir?</h2>
-          <p class="lead" style="margin-top: 20px" data-reveal>Nuestro asesor conoce las 156 fragancias del catálogo. Contale para quién es, para qué ocasión y qué aromas te gustan, y te recomienda al instante. También responde sobre precios, envíos y pedidos.</p>
+          <p class="label">Black Friday · por tiempo limitado</p>
+          <p class="promo__copy">Cada perfume de 100 ml a <em>350 Bs.</em> Antes <s>410&nbsp;Bs.</s> Combiná los aromas que quieras: las promos se aplican solas.</p>
+          <div class="ctas"><a class="btn btn--dark" href="/precios" data-magnetic>Ver precios y combos <span class="arr">→</span></a><a class="link" href="/precios#calculadora">Armá tu combo</a></div>
         </div>
-        <div class="advisor__panel" data-reveal>
-          <div class="advisor__head"><span class="dock__orb" aria-hidden="true"></span>Preguntale, por ejemplo:</div>
-          <div class="advisor__q">
-            <button data-chat-open data-chat-q="Busco un perfume dulce y duradero para la noche, para mujer">Algo dulce y duradero para la noche <span>›</span></button>
-            <button data-chat-open data-chat-q="Quiero regalarle a mi novio algo fresco para el día">Un regalo fresco para él <span>›</span></button>
-            <button data-chat-open data-chat-q="¿Qué se parece a Baccarat Rouge 540?">¿Qué se parece a Baccarat Rouge? <span>›</span></button>
-            <button data-chat-open data-chat-q="¿Cuánto me sale el envío a Cochabamba?">¿Envían a Cochabamba? <span>›</span></button>
-          </div>
-        </div>
+        <ul class="tiers">
+          <li data-reveal><span>1 perfume <small>100 ml</small></span><i></i><strong>350 Bs.</strong></li>
+          <li data-reveal><span>2 perfumes <small>345 c/u</small></span><i></i><strong>690 Bs.</strong></li>
+          <li data-reveal><span>4 perfumes <small>315 c/u</small></span><i></i><strong>1.260 Bs.</strong></li>
+          <li data-reveal><span>Decants <small>5 · 10 · 30 ml</small></span><i></i><strong>desde 50 Bs.</strong></li>
+        </ul>
       </div>
     </section>
 
-    <!-- 12 · how to order -->
-    <section class="sec steps-sec" aria-labelledby="stepsTitle">
-      <div class="wrap"><h2 class="h2 sec-title" id="stepsTitle" data-split>Tu perfume, a un mensaje. <em>En tres pasos.</em></h2></div>
-      <div class="wrap steps3">
-        <div class="step3" data-reveal><b class="grad">1</b><h3>Elegí</h3><p>Agregá tus fragancias desde la tienda o armá el pedido en 3 pasos. Las promos se aplican solas.</p></div>
-        <div class="step3" data-reveal><b class="grad">2</b><h3>Confirmá</h3><p>Te abrimos WhatsApp con el pedido listo. Confirmamos stock, total y envío con vos.</p></div>
-        <div class="step3" data-reveal><b class="grad">3</b><h3>Recibí</h3><p>Enviamos a toda Bolivia. Gratis en perfumes de 100 ml. Pagás por QR, transferencia o efectivo.</p></div>
+    <!-- advisor -->
+    <section class="advisor wrap">
+      <div class="advisor__orb" aria-hidden="true"><span></span></div>
+      <p class="label" style="justify-content:center">Asesor virtual</p>
+      <h2 class="h2 center" data-split>¿No sabés <i>cuál elegir?</i></h2>
+      <p class="lead center" data-reveal>Nuestro asesor conoce las 156 fragancias. Contale para quién es, la ocasión y qué aromas te gustan: te recomienda al instante.</p>
+      <div class="advisor__q" data-reveal>
+        <button data-chat-open data-chat-q="Busco un perfume dulce y duradero para la noche, para mujer">Algo dulce para la noche</button>
+        <button data-chat-open data-chat-q="Quiero regalarle a mi novio algo fresco para el día">Un regalo fresco para él</button>
+        <button data-chat-open data-chat-q="¿Qué se parece a Baccarat Rouge 540?">¿Qué se parece a Baccarat Rouge?</button>
+        <button data-chat-open data-chat-q="¿Cuánto me sale el envío a Cochabamba?">¿Envían a Cochabamba?</button>
       </div>
-      <p class="center" style="margin-top: 40px" data-reveal><a class="btn btn--dark" href="/pedido" data-magnetic>Hacer pedido</a></p>
+    </section>
+
+    <!-- ritual -->
+    <section class="ritual wrap">
+      <div class="sec-head"><div><p class="label">El ritual</p><h2 class="h2" data-split>Tu perfume, <i>a un mensaje.</i></h2></div><a class="btn btn--line" href="/pedido" data-magnetic>Hacer pedido <span class="arr">→</span></a></div>
+      <ol class="ritual__steps">
+        <li data-reveal><b>I.</b><h3>Elegí</h3><p>Agregá tus fragancias desde la colección o armá el pedido en tres pasos. Las promos se aplican solas.</p></li>
+        <li data-reveal><b>II.</b><h3>Confirmá</h3><p>Te abrimos WhatsApp con el pedido listo. Confirmamos stock, total y envío con vos.</p></li>
+        <li data-reveal><b>III.</b><h3>Recibí</h3><p>Enviamos a toda Bolivia, gratis en perfumes de 100 ml. Pagás por QR, transferencia o efectivo.</p></li>
+      </ol>
     </section>
   </main>
   <script type="module" src="/src/pages/home.js"></script>
