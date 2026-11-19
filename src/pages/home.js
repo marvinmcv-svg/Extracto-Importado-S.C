@@ -67,8 +67,9 @@ if (!reduced) {
   gsap.to('.hero__badge svg', { rotate: 360, duration: 18, ease: 'none', repeat: -1 });
 }
 // keep the floating dock out of the hero composition
-ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: '70% top', onToggle: (st) => document.body.classList.toggle('dock-hidden', st.isActive) });
-document.body.classList.add('dock-hidden');
+// (derived from the real scroll position, so landing mid-page — reload, anchor, back — still shows it)
+const syncDock = (st) => document.body.classList.toggle('dock-hidden', st.progress < 1);
+ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: '70% top', onUpdate: syncDock, onRefresh: syncDock, onLeave: syncDock, onEnterBack: syncDock });
 
 /* ───────── houses marquee — speed follows scroll velocity ───────── */
 const hs = houses.filter((h) => products.filter((p) => p.house === h).length >= 2);
